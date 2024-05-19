@@ -13,26 +13,26 @@ struct MainTabView: View {
     var body: some View {
         TabView(selection: $selectedTab,
                 content:  {
-            YourLotteryView()
+            MyLotteryView()
                 .tabItem {
                     Image(systemName: "123.rectangle")
-                    Text("Your Lottery")
+                    Text("My Lottery")
                 }
                 .tag(1)
-            Text("Tab Content 2")
+            SummaryView()
                 .tabItem {
-                    Image(systemName: "square.grid.2x2")
+                    Image(systemName: "list.bullet.clipboard")
                     Text("Summary")
                 }
                 .tag(2)
-            Text("Tab Content 3")
+            CheckResultView()
                 .tabItem {
                     Image(systemName: "1.magnifyingglass")
                     Text("Check Result")
                 }
                 .tag(3)
         })
-        .tint(Color.teal)
+        .tint(.teal)
     }
 }
 

@@ -8,12 +8,12 @@
 import SwiftUI
 import SwiftData
 
-struct YourLotteryView: View {
+struct MyLotteryView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Lottery]
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List {
                 ForEach(items) { item in
                     NavigationLink {
@@ -25,17 +25,13 @@ struct YourLotteryView: View {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
+            .navigationTitle("My Lotter\(items.count >=  2 ? "ies" : "y")")
         }
     }
 
@@ -56,6 +52,6 @@ struct YourLotteryView: View {
 }
 
 #Preview {
-    YourLotteryView()
+    MyLotteryView()
         .modelContainer(for: Lottery.self, inMemory: true)
 }
