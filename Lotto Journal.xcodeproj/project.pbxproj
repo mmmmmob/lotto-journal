@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
-		4AF0975F2BF9DA21003A813B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* ContentView.swift */; };
-		4AF097612BF9DA21003A813B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* Item.swift */; };
+		4AF0975F2BF9DA21003A813B /* YourLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* YourLotteryView.swift */; };
+		4AF097612BF9DA21003A813B /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* Lottery.swift */; };
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
 		4AF097662BF9DA24003A813B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097652BF9DA24003A813B /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -17,8 +17,8 @@
 /* Begin PBXFileReference section */
 		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
-		4AF0975E2BF9DA21003A813B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4AF097602BF9DA21003A813B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		4AF0975E2BF9DA21003A813B /* YourLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourLotteryView.swift; sourceTree = "<group>"; };
+		4AF097602BF9DA21003A813B /* Lottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottery.swift; sourceTree = "<group>"; };
 		4AF097622BF9DA24003A813B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AF097652BF9DA24003A813B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,9 +53,10 @@
 		4AF0975B2BF9DA21003A813B /* Lotto Journal */ = {
 			isa = PBXGroup;
 			children = (
+				4AF0976E2BF9DA4C003A813B /* ViewModels */,
+				4AF0976D2BF9DA43003A813B /* Views */,
+				4AF0976C2BF9DA3A003A813B /* Models */,
 				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
-				4AF0975E2BF9DA21003A813B /* ContentView.swift */,
-				4AF097602BF9DA21003A813B /* Item.swift */,
 				4AF097622BF9DA24003A813B /* Assets.xcassets */,
 				4AF097642BF9DA24003A813B /* Preview Content */,
 			);
@@ -68,6 +69,45 @@
 				4AF097652BF9DA24003A813B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4AF0976C2BF9DA3A003A813B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4AF097602BF9DA21003A813B /* Lottery.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4AF0976D2BF9DA43003A813B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4AF097722BF9DBA1003A813B /* Main */,
+				4AF0976F2BF9DB75003A813B /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4AF0976E2BF9DA4C003A813B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4AF0976F2BF9DB75003A813B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		4AF097722BF9DBA1003A813B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4AF0975E2BF9DA21003A813B /* YourLotteryView.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AF0975F2BF9DA21003A813B /* ContentView.swift in Sources */,
-				4AF097612BF9DA21003A813B /* Item.swift in Sources */,
+				4AF0975F2BF9DA21003A813B /* YourLotteryView.swift in Sources */,
+				4AF097612BF9DA21003A813B /* Lottery.swift in Sources */,
 				4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,21 +319,28 @@
 				DEVELOPMENT_TEAM = NW4HLMMSCB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lotto Journal";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.theppitak.Lotto-Journal";
+				PRODUCT_BUNDLE_IDENTIFIER = me.theppitak.LottoJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,21 +355,28 @@
 				DEVELOPMENT_TEAM = NW4HLMMSCB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Lotto Journal";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "me.theppitak.Lotto-Journal";
+				PRODUCT_BUNDLE_IDENTIFIER = me.theppitak.LottoJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
