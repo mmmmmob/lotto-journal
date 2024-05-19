@@ -12,6 +12,7 @@
 		4AF097612BF9DA21003A813B /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* Lottery.swift */; };
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
 		4AF097662BF9DA24003A813B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097652BF9DA24003A813B /* Preview Assets.xcassets */; };
+		4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097732BF9E2F0003A813B /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		4AF097602BF9DA21003A813B /* Lottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottery.swift; sourceTree = "<group>"; };
 		4AF097622BF9DA24003A813B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AF097652BF9DA24003A813B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4AF097732BF9E2F0003A813B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +36,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A8C44042BF9FA1B000461B9 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				4AF0975E2BF9DA21003A813B /* YourLotteryView.swift */,
+			);
+			name = PageView;
+			sourceTree = "<group>";
+		};
 		4AF097502BF9DA21003A813B = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +92,7 @@
 		4AF0976D2BF9DA43003A813B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A8C44042BF9FA1B000461B9 /* PageView */,
 				4AF097722BF9DBA1003A813B /* Main */,
 				4AF0976F2BF9DB75003A813B /* Components */,
 			);
@@ -105,7 +116,7 @@
 		4AF097722BF9DBA1003A813B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4AF0975E2BF9DA21003A813B /* YourLotteryView.swift */,
+				4AF097732BF9E2F0003A813B /* MainTabView.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 				4AF0975F2BF9DA21003A813B /* YourLotteryView.swift in Sources */,
 				4AF097612BF9DA21003A813B /* Lottery.swift in Sources */,
 				4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */,
+				4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
