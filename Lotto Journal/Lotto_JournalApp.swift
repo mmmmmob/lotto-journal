@@ -25,7 +25,7 @@ struct Lotto_JournalApp: App {
 
     var body: some Scene {
         WindowGroup {
-            YourLotteryView()
+            MainTabView(selectedTab: 1)
         }
         .modelContainer(sharedModelContainer)
     }
