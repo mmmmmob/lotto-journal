@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C44072BFA747C000461B9 /* CheckResultView.swift */; };
 		4A8C440A2BFA748F000461B9 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C44092BFA748F000461B9 /* SummaryView.swift */; };
+		4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C440C2BFAFA75000461B9 /* DateExtension.swift */; };
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
 		4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */; };
 		4AF097612BF9DA21003A813B /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* Lottery.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		4A8C44072BFA747C000461B9 /* CheckResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResultView.swift; sourceTree = "<group>"; };
 		4A8C44092BFA748F000461B9 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		4A8C440C2BFAFA75000461B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
 		4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryView.swift; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 			name = PageView;
 			sourceTree = "<group>";
 		};
+		4A8C440B2BFAFA34000461B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A8C440C2BFAFA75000461B9 /* DateExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4AF097502BF9DA21003A813B = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +83,7 @@
 				4AF0976D2BF9DA43003A813B /* Views */,
 				4AF0976E2BF9DA4C003A813B /* ViewModels */,
 				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
+				4A8C440B2BFAFA34000461B9 /* Extensions */,
 				4AF097622BF9DA24003A813B /* Assets.xcassets */,
 				4AF097642BF9DA24003A813B /* Preview Content */,
 			);
@@ -198,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */,
+				4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */,
 				4AF097612BF9DA21003A813B /* Lottery.swift in Sources */,
 				4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */,
 				4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */,
