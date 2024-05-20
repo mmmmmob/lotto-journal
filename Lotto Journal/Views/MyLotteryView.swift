@@ -10,7 +10,7 @@ import SwiftData
 
 struct MyLotteryView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Lottery]
+    @Query private var items: [MyLotto]
 
     var body: some View {
         NavigationStack {
@@ -40,7 +40,7 @@ struct MyLotteryView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Lottery(timestamp: Date())
+            let newItem = MyLotto(timestamp: Date())
             modelContext.insert(newItem)
         }
     }
@@ -56,5 +56,5 @@ struct MyLotteryView: View {
 
 #Preview {
     MyLotteryView()
-        .modelContainer(for: Lottery.self, inMemory: true)
+        .modelContainer(for: MyLotto.self, inMemory: true)
 }

@@ -12,9 +12,10 @@
 		4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C440C2BFAFA75000461B9 /* DateExtension.swift */; };
 		4A8C44132BFB5026000461B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8C44122BFB5026000461B9 /* Alamofire */; };
 		4A8C441A2BFB567A000461B9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8C44192BFB567A000461B9 /* SwiftyJSON */; };
+		4A8C441E2BFB675C000461B9 /* ResultLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C441D2BFB675B000461B9 /* ResultLotto.swift */; };
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
 		4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */; };
-		4AF097612BF9DA21003A813B /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* Lottery.swift */; };
+		4AF097612BF9DA21003A813B /* MyLotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* MyLotto.swift */; };
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
 		4AF097662BF9DA24003A813B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097652BF9DA24003A813B /* Preview Assets.xcassets */; };
 		4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097732BF9E2F0003A813B /* MainTabView.swift */; };
@@ -37,10 +38,11 @@
 		4A8C44072BFA747C000461B9 /* CheckResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResultView.swift; sourceTree = "<group>"; };
 		4A8C44092BFA748F000461B9 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		4A8C440C2BFAFA75000461B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		4A8C441D2BFB675B000461B9 /* ResultLotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultLotto.swift; sourceTree = "<group>"; };
 		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
 		4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryView.swift; sourceTree = "<group>"; };
-		4AF097602BF9DA21003A813B /* Lottery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottery.swift; sourceTree = "<group>"; };
+		4AF097602BF9DA21003A813B /* MyLotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotto.swift; sourceTree = "<group>"; };
 		4AF097622BF9DA24003A813B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AF097652BF9DA24003A813B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AF097732BF9E2F0003A813B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -125,7 +127,8 @@
 		4AF0976C2BF9DA3A003A813B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4AF097602BF9DA21003A813B /* Lottery.swift */,
+				4AF097602BF9DA21003A813B /* MyLotto.swift */,
+				4A8C441D2BFB675B000461B9 /* ResultLotto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,9 +239,10 @@
 			files = (
 				4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */,
 				4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */,
-				4AF097612BF9DA21003A813B /* Lottery.swift in Sources */,
+				4AF097612BF9DA21003A813B /* MyLotto.swift in Sources */,
 				4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */,
 				4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */,
+				4A8C441E2BFB675C000461B9 /* ResultLotto.swift in Sources */,
 				4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */,
 				4A8C440A2BFA748F000461B9 /* SummaryView.swift in Sources */,
 			);

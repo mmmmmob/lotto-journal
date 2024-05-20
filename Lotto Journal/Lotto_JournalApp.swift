@@ -12,7 +12,7 @@ import SwiftData
 struct Lotto_JournalApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Lottery.self,
+            MyLotto.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
