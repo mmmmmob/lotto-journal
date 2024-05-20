@@ -16,10 +16,13 @@ struct MyLotteryView: View {
         NavigationStack {
             List {
                 ForEach(items) { item in
+                    
+                    let testDate = item.timestamp.nameOfMonth + " " + item.timestamp.date + ", " + item.timestamp.year
+                    
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        Text("Item at \(testDate)")
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        Text("\(testDate)")
                     }
                 }
                 .onDelete(perform: deleteItems)

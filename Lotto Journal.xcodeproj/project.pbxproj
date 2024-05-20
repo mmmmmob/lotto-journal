@@ -10,6 +10,8 @@
 		4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C44072BFA747C000461B9 /* CheckResultView.swift */; };
 		4A8C440A2BFA748F000461B9 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C44092BFA748F000461B9 /* SummaryView.swift */; };
 		4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C440C2BFAFA75000461B9 /* DateExtension.swift */; };
+		4A8C44132BFB5026000461B9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8C44122BFB5026000461B9 /* Alamofire */; };
+		4A8C441A2BFB567A000461B9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 4A8C44192BFB567A000461B9 /* SwiftyJSON */; };
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
 		4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */; };
 		4AF097612BF9DA21003A813B /* Lottery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097602BF9DA21003A813B /* Lottery.swift */; };
@@ -17,6 +19,19 @@
 		4AF097662BF9DA24003A813B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097652BF9DA24003A813B /* Preview Assets.xcassets */; };
 		4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097732BF9E2F0003A813B /* MainTabView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4A8C441C2BFB5DF8000461B9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4A8C44072BFA747C000461B9 /* CheckResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResultView.swift; sourceTree = "<group>"; };
@@ -36,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A8C441A2BFB567A000461B9 /* SwiftyJSON in Frameworks */,
+				4A8C44132BFB5026000461B9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +77,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4A8C44102BFB2009000461B9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4AF097502BF9DA21003A813B = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +105,7 @@
 			children = (
 				4AF0976C2BF9DA3A003A813B /* Models */,
 				4AF0976D2BF9DA43003A813B /* Views */,
-				4AF0976E2BF9DA4C003A813B /* ViewModels */,
+				4A8C44102BFB2009000461B9 /* ViewModels */,
 				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
 				4A8C440B2BFAFA34000461B9 /* Extensions */,
 				4AF097622BF9DA24003A813B /* Assets.xcassets */,
@@ -116,13 +140,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		4AF0976E2BF9DA4C003A813B /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		4AF0976F2BF9DB75003A813B /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,12 +165,17 @@
 				4AF097552BF9DA21003A813B /* Sources */,
 				4AF097562BF9DA21003A813B /* Frameworks */,
 				4AF097572BF9DA21003A813B /* Resources */,
+				4A8C441C2BFB5DF8000461B9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Lotto Journal";
+			packageProductDependencies = (
+				4A8C44122BFB5026000461B9 /* Alamofire */,
+				4A8C44192BFB567A000461B9 /* SwiftyJSON */,
+			);
 			productName = "Lotto Journal";
 			productReference = 4AF097592BF9DA21003A813B /* Lotto Journal.app */;
 			productType = "com.apple.product-type.application";
@@ -182,6 +204,10 @@
 				Base,
 			);
 			mainGroup = 4AF097502BF9DA21003A813B;
+			packageReferences = (
+				4A8C44112BFB5026000461B9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4A8C44182BFB567A000461B9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 4AF0975A2BF9DA21003A813B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -434,6 +460,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A8C44112BFB5026000461B9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		4A8C44182BFB567A000461B9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A8C44122BFB5026000461B9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A8C44112BFB5026000461B9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		4A8C44192BFB567A000461B9 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A8C44182BFB567A000461B9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4AF097512BF9DA21003A813B /* Project object */;
 }
