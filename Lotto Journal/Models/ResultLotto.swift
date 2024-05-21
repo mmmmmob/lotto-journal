@@ -4,6 +4,7 @@
 //
 //  Created by Theppitak M. on 20.05.2024.
 //
+import Foundation
 
 struct ResultLotto {
     var firstPrize: String = ""
@@ -15,4 +16,6 @@ struct ResultLotto {
     var thirdPrize: [String] = [""]
     var fourthPrize: [String] = [""]
     var fifthPrize: [String] = [""]
+    
+    var latestResultDate: String = ""
 }

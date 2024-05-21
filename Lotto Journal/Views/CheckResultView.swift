@@ -11,7 +11,7 @@ struct CheckResultView: View {
     
     @StateObject var viewModel = CheckResultViewModel()
     @State var text: String = ""
-    @State var date = Date()
+    @State var date: Date = Date()
     
     var body: some View {
         NavigationStack {
@@ -74,6 +74,15 @@ struct CheckResultView: View {
             }
             .padding(.horizontal)
             .searchable(text: $text, prompt: "Check Your Lottery")
+            .keyboardType(.numberPad)
+            .onAppear(perform: {
+                viewModel.LatestResultAPI()
+            })
+            .onChange(of: viewModel.result.latestResultDate) {
+                if let latestResultDate = viewModel.result.latestResultDate.toDate() {
+                    date = latestResultDate
+                }
+            }
             .onChange(of: date) {
                 viewModel.CheckResultAPI(date.params)
             }
@@ -83,7 +92,6 @@ struct CheckResultView: View {
                 }
             }
         }
-        
     }
 }
 
