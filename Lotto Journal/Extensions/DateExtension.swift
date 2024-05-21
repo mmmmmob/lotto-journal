@@ -6,17 +6,28 @@
 //
 
 import Foundation
+import Alamofire
 
 extension Date {
     
-    var date: String {
+    var dateSingle: String {
         let calendar = Calendar.current
         return String(calendar.component(.day, from: self))
     }
     
-    var month: String {
+    var dateDouble: String {
+        let calendar = Calendar.current
+        return String(format: "%02d", calendar.component(.day, from: self))
+    }
+    
+    var monthSingle: String {
         let calendar = Calendar.current
         return String(calendar.component(.month, from: self))
+    }
+    
+    var monthDouble: String {
+        let calendar = Calendar.current
+        return String(format: "%02d", calendar.component(.month, from: self))
     }
     
     var year: String {
@@ -53,4 +64,16 @@ extension Date {
                 return "December"
             }
         }
+    
+    var periodDate: String {
+        return "\(self.year)-\(self.monthDouble)-\(self.dateDouble)"
+    }
+    
+    var params: Parameters {
+        return [
+            "date": self.dateSingle,
+            "month": self.monthSingle,
+            "year": self.year
+        ]
+    }
 }
