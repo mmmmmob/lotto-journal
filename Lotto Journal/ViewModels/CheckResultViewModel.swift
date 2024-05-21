@@ -10,8 +10,10 @@ import Alamofire
 import SwiftyJSON
 
 class CheckResultViewModel: ObservableObject {
+    
+    @Published var result: String = ""
             
-    func APICall(_ payload: Parameters) {
+    func CheckResultAPI(_ payload: Parameters) {
         AF.request(
             "https://www.glo.or.th/api/checking/getLotteryResult",
             method: .post,
@@ -22,8 +24,7 @@ class CheckResultViewModel: ObservableObject {
         .responseData { response in
             let json = try? JSON(data: response.data!)
             let path: [JSONSubscriptType] = ["response","result","data","first","number",0,"value"]
-            print(json![path].string ?? "nil")
+            self.result = json![path].string ?? "nil"
         }
-        
     }
 }
