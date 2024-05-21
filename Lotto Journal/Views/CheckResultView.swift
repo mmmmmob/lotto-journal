@@ -6,43 +6,27 @@
 //
 
 import SwiftUI
-import Alamofire
-import SwiftyJSON
 
 struct CheckResultView: View {
     
-    let dateReq = RequestDate(date: "16", month: "05", year: "2024")
-    
+    @StateObject var viewModel = CheckResultViewModel()
+    @State var text: String = ""
+    @State var date = Date()
+
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(systemName: "magnifyingglass")
-                    .font(.largeTitle)
-                    .foregroundColor(.teal)
-                Text("Check Result")
-            }
-            .navigationTitle("Check Result")
+            DatePicker("🗓️ Draw Date", selection: $date
+                       , displayedComponents: .date)
+                .padding()
+                Spacer()
+                .navigationTitle("Check Result")
         }
-        .onAppear(perform: {
-            APICall(dateReq.params)
-        })
+        .searchable(text: $text)
+        .onChange(of: date) {
+            viewModel.APICall(date.params)
+        }
     }
     
-    func APICall(_ payload: Parameters) {
-        AF.request(
-            "https://www.glo.or.th/api/checking/getLotteryResult",
-            method: .post,
-            parameters: payload,
-            encoding: JSONEncoding.default,
-            headers: nil)
-        .validate(statusCode: 200 ..< 299)
-        .responseData { response in
-            let json = try? JSON(data: response.data!)
-            let path: [JSONSubscriptType] = ["response","result","data","first","number",0,"value"]
-            print(json![path].string!)
-        }
-        
-    }
 }
 
 #Preview {

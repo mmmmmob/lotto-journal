@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 extension Date {
     
@@ -53,4 +54,12 @@ extension Date {
                 return "December"
             }
         }
+    
+    var params: Parameters {
+        return [
+            "date": self.date,
+            "month": self.month,
+            "year": self.year
+        ]
+    }
 }
