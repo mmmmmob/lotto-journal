@@ -70,12 +70,17 @@ struct CheckResultView: View {
                         PrizeNumberMultipleView(number: viewModel.result.fifthPrize)
                     }
                 }
-                .navigationTitle("Check Result")
+                .navigationTitle("Prize Result")
             }
             .padding(.horizontal)
-            .searchable(text: $text)
+            .searchable(text: $text, prompt: "Check Your Lottery")
             .onChange(of: date) {
                 viewModel.CheckResultAPI(date.params)
+            }
+            .onChange(of: text) {
+                if text.count == 6 {
+                    viewModel.NumberSearchAPI(searchNum: text, date: date.periodDate)
+                }
             }
         }
         

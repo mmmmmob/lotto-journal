@@ -28,7 +28,7 @@ struct MainTabView: View {
             CheckResultView()
                 .tabItem {
                     Image(systemName: "1.magnifyingglass")
-                    Text("Check Result")
+                    Text("Prize Result")
                 }
                 .tag(3)
         })

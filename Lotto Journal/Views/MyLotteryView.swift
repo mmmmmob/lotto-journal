@@ -17,7 +17,7 @@ struct MyLotteryView: View {
             List {
                 ForEach(items) { item in
                     
-                    let testDate = item.timestamp.nameOfMonth + " " + item.timestamp.date + ", " + item.timestamp.year
+                    let testDate = item.timestamp.nameOfMonth + " " + item.timestamp.dateSingle + ", " + item.timestamp.year
                     
                     NavigationLink {
                         Text("Item at \(testDate)")
