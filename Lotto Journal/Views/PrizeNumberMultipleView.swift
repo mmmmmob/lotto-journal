@@ -13,8 +13,8 @@ struct PrizeNumberMultipleView: View {
     
     var body: some View {
         ScrollView() {
-            LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())]) {
-                var sortedNumber = number.sorted()
+            LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())], alignment: .center, spacing: 8) {
+                let sortedNumber = number.sorted()
                 ForEach(sortedNumber.indices, id: \.self) { index in
                     Text(sortedNumber[index])
                 }

@@ -30,7 +30,7 @@ struct CheckResultView: View {
                 VStack {
                     VStack {
                         PrizeHeaderView(prize: "First Prize", amount: "6,000,000")
-                        PrizeNumberView(number: "456777")
+                        PrizeNumberView(number: viewModel.result.firstPrize)
                     }
                     VStack {
                         PrizeHeaderView(prize: "Three Digits Prefix", amount: "4,000")
@@ -48,7 +48,7 @@ struct CheckResultView: View {
                     }
                     VStack {
                         PrizeHeaderView(prize: "Two Digits Suffix", amount: "2,000")
-                        PrizeNumberView(number: "60")
+                        PrizeNumberView(number: viewModel.result.twoDigitsSuffix)
                     }
                     VStack {
                         PrizeHeaderView(prize: "First Price Neighbors", amount: "100,000")

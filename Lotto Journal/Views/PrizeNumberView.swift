@@ -15,7 +15,6 @@ struct PrizeNumberView: View {
         Text(number)
             .font(.system(.title, design: .monospaced, weight: .bold))
             .lineLimit(1)
-            .minimumScaleFactor(0.4)
             .foregroundStyle(.white)
             .tracking(10)
             .multilineTextAlignment(.center)

@@ -11,9 +11,16 @@ import SwiftyJSON
 
 class CheckResultViewModel: ObservableObject {
     
-    @Published var result: String = ""
+    @Published var result = ResultLotto()
+    
+
+    
             
     func CheckResultAPI(_ payload: Parameters) {
+        
+        let pathFirstPrize: [JSONSubscriptType] = ["response","result","data","first","number",0,"value"]
+        let pathTwoDigitPrize: [JSONSubscriptType] = ["response","result","data","last2","number",0,"value"]
+        
         AF.request(
             "https://www.glo.or.th/api/checking/getLotteryResult",
             method: .post,
@@ -23,8 +30,8 @@ class CheckResultViewModel: ObservableObject {
         .validate(statusCode: 200 ..< 299)
         .responseData { response in
             let json = try? JSON(data: response.data!)
-            let path: [JSONSubscriptType] = ["response","result","data","first","number",0,"value"]
-            self.result = json![path].string ?? "nil"
+            self.result.firstPrize = json![pathFirstPrize].string ?? "nil"
+            self.result.twoDigitsSuffix = json![pathTwoDigitPrize].string ?? "nil"
         }
     }
 }
