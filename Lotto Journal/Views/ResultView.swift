@@ -21,18 +21,18 @@ struct ResultView: View {
                     Text("🔍")
                         .font(.system(size: 80))
                     Text("Enter lottery number above")
-                        .font(.title3)
+                        .font(.title2).bold()
                 }
                 else if viewModel.result.fetchNumberStatus == 200 && viewModel.userPrizeResult.isEmpty {
                     Text("😢")
                         .font(.system(size: 80))
                     Text("Sorry, you didn't win...")
-                        .font(.title3)
+                        .font(.title2).bold()
                 } else if viewModel.result.fetchNumberStatus == 200 && !viewModel.userPrizeResult.isEmpty {
                     Text("🎉")
                         .font(.system(size: 80))
                     Text("Yay! You won!")
-                        .font(.title3)
+                        .font(.system(.title3, weight: .light))
                     VStack {
                         ForEach(viewModel.userPrizeResult, id: \.self) { result in
                             switch result {
@@ -84,7 +84,7 @@ struct ResultView: View {
                             }
                         }
                     }
-                    .font(.title3).bold()
+                    .font(.title2).bold()
                 } else {
                     ProgressView("Loading...")
                 }
