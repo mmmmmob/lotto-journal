@@ -13,7 +13,16 @@ class CheckResultViewModel: ObservableObject {
     
     @Published var result = ResultLotto()
     
-    func NumberSearchAPI(searchNum: String, date: String) {
+    var userPrizeResult: [String] {
+        var prizeResult = [String]()
+        let pathPrize: [JSONSubscriptType] = ["reward"]
+        for prize in result.userResult {
+            prizeResult.append(prize[pathPrize].string ?? "-")
+        }
+        return prizeResult
+    }
+    
+    func numberSearchAPI(searchNum: String, date: String) {
         AF.request(
             "https://www.glo.or.th/api/checking/getcheckLotteryResult",
             method: .post,
@@ -31,18 +40,18 @@ class CheckResultViewModel: ObservableObject {
             case .success(let data):
                 do {
                     // Get Result Value as an Array Object
+                    self.result.userResult.removeAll(keepingCapacity: true)
                     let json = try JSON(data: data)
                     let pathResult: [JSONSubscriptType] = ["response", "result", 0, "status_data"]
                     DispatchQueue.main.async {
-                        self.result.userResult = json[pathResult].arrayObject ?? [""]
-                        print(self.result.userResult)
+                        self.result.userResult = json[pathResult].array ?? [""]
                     }
-
+                    
                     // Get Status
                     let pathStatus: [JSONSubscriptType] = ["statusCode"]
-                    self.result.fetchStatus = 500
+                    self.result.fetchNumberStatus = 500
                     DispatchQueue.main.async {
-                        self.result.fetchStatus = json[pathStatus].int ?? 500
+                        self.result.fetchNumberStatus = json[pathStatus].int ?? 500
                     }
                 } catch {
                     print("Error parsing JSON: \(error)")
@@ -53,7 +62,7 @@ class CheckResultViewModel: ObservableObject {
         }
     }
     
-    func CheckResultAPI(_ payload: Parameters) {
+    func checkResultAPI(_ payload: Parameters) {
         AF.request(
             "https://www.glo.or.th/api/checking/getLotteryResult",
             method: .post,
@@ -135,7 +144,7 @@ class CheckResultViewModel: ObservableObject {
                     // Get Status
                     let pathStatus: [JSONSubscriptType] = ["statusCode"]
                     DispatchQueue.main.async {
-                        self.result.fetchStatus = json[pathStatus].int ?? 500
+                        self.result.fetchDrawStatus = json[pathStatus].int ?? 500
                     }
                 } catch {
                     print("Error parsing JSON: \(error)")
@@ -147,7 +156,7 @@ class CheckResultViewModel: ObservableObject {
         }
     }
     
-    func LatestResultAPI() {
+    func latestResultAPI() {
         AF.request(
             "https://www.glo.or.th/api/lottery/getLatestLottery",
             method: .post,
@@ -233,9 +242,9 @@ class CheckResultViewModel: ObservableObject {
                     
                     // Get Status
                     let pathStatus: [JSONSubscriptType] = ["statusCode"]
-                    self.result.fetchStatus = 500
+                    self.result.fetchLatestStatus = 500
                     DispatchQueue.main.async {
-                        self.result.fetchStatus = json[pathStatus].int ?? 500
+                        self.result.fetchLatestStatus = json[pathStatus].int ?? 500
                     }
                 } catch {
                     print("Error parsing JSON: \(error)")

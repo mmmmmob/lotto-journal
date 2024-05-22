@@ -5,6 +5,7 @@
 //  Created by Theppitak M. on 20.05.2024.
 //
 import Foundation
+import SwiftyJSON
 
 struct ResultLotto {
     // Store prize result
@@ -20,6 +21,8 @@ struct ResultLotto {
     
     // Identifying objects
     var latestResultDate: String = ""
-    var userResult: [Any] = []
-    var fetchStatus: Int = 500
+    var userResult: [JSON] = []
+    var fetchNumberStatus: Int = 500
+    var fetchLatestStatus: Int = 500
+    var fetchDrawStatus: Int = 500
 }

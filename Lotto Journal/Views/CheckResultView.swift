@@ -23,10 +23,10 @@ struct CheckResultView: View {
             .padding(.horizontal)
             Spacer()
             ScrollView {
-                if viewModel.result.fetchStatus == 500 {
+                if viewModel.result.fetchLatestStatus == 500 {
                     ProgressView("Loading...")
                         .offset(x: 0, y:200)
-                } else if viewModel.result.fetchStatus == 200 {
+                } else if viewModel.result.fetchLatestStatus == 200 {
                     VStack {
                         VStack {
                             PrizeHeaderView(prize: "First Prize", amount: "6,000,000")
@@ -84,7 +84,7 @@ struct CheckResultView: View {
             
         }
         .onAppear(perform: {
-            viewModel.LatestResultAPI()
+            viewModel.latestResultAPI()
         })
         .onChange(of: viewModel.result.latestResultDate) {
             if let latestResultDate = viewModel.result.latestResultDate.toDate() {
@@ -92,7 +92,7 @@ struct CheckResultView: View {
             }
         }
         .onChange(of: date) {
-            viewModel.CheckResultAPI(date.params)
+            viewModel.checkResultAPI(date.params)
         }
     }
 }
