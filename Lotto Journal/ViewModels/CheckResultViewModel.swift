@@ -30,10 +30,14 @@ class CheckResultViewModel: ObservableObject {
             switch response.result {
             case .success(let data):
                 do {
+                    // Get Result Value as an Array Object
                     let json = try JSON(data: data)
-                    let pathResult: [JSONSubscriptType] = ["response", "result", 0, "status_data", 0, "reward"]
-                    print(json[pathResult].string ?? "-")
-                    
+                    let pathResult: [JSONSubscriptType] = ["response", "result", 0, "status_data"]
+                    DispatchQueue.main.async {
+                        self.result.userResult = json[pathResult].arrayObject ?? [""]
+                        print(self.result.userResult)
+                    }
+
                     // Get Status
                     let pathStatus: [JSONSubscriptType] = ["statusCode"]
                     self.result.fetchStatus = 500

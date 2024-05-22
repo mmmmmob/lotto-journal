@@ -20,5 +20,6 @@ struct ResultLotto {
     
     // Identifying objects
     var latestResultDate: String = ""
+    var userResult: [Any] = []
     var fetchStatus: Int = 500
 }

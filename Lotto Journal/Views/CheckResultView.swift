@@ -15,13 +15,16 @@ struct CheckResultView: View {
     
     var body: some View {
         NavigationStack {
+            ResultView(text: $text, date: $date)
+                .searchable(text: $text, prompt: "Check Your Lottery")
+                .keyboardType(.numberPad)
             DatePicker("🗓️ Draw Date", selection: $date
                        , displayedComponents: .date)
             .padding(.horizontal)
             Spacer()
             ScrollView {
                 if viewModel.result.fetchStatus == 500 {
-                        ProgressView("Loading...")
+                    ProgressView("Loading...")
                         .offset(x: 0, y:200)
                 } else if viewModel.result.fetchStatus == 200 {
                     VStack {
@@ -78,24 +81,18 @@ struct CheckResultView: View {
             }
             .navigationTitle("Prize Result")
             .padding(.horizontal)
-            .searchable(text: $text, prompt: "Check Your Lottery")
-            .keyboardType(.numberPad)
-            .onAppear(perform: {
-                viewModel.LatestResultAPI()
-            })
-            .onChange(of: viewModel.result.latestResultDate) {
-                if let latestResultDate = viewModel.result.latestResultDate.toDate() {
-                    date = latestResultDate
-                }
+            
+        }
+        .onAppear(perform: {
+            viewModel.LatestResultAPI()
+        })
+        .onChange(of: viewModel.result.latestResultDate) {
+            if let latestResultDate = viewModel.result.latestResultDate.toDate() {
+                date = latestResultDate
             }
-            .onChange(of: date) {
-                viewModel.CheckResultAPI(date.params)
-            }
-            .onChange(of: text) {
-                if text.count == 6 {
-                    viewModel.NumberSearchAPI(searchNum: text, date: date.periodDate)
-                }
-            }
+        }
+        .onChange(of: date) {
+            viewModel.CheckResultAPI(date.params)
         }
     }
 }
