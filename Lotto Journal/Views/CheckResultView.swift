@@ -19,23 +19,25 @@ struct CheckResultView: View {
             ResultView(text: $text, date: $date, isSearchDone: $isSearchDone)
                 .searchable(text: $text, prompt: "Check Your Lottery")
                 .keyboardType(.numberPad)
-            HStack {
-                DatePicker("🗓️ Draw Date", selection: $date
-                           , displayedComponents: .date)
-                Button("Latest") {
-                    viewModel.latestResultAPI()
-                    if let latestResultDate = viewModel.result.latestResultDate.toDate() {
-                        date = latestResultDate
+            ScrollView {
+                VStack {
+                    DatePicker("🗓️ Draw Date", selection: $date, in: viewModel.firstDateOfResult...Date()
+                               , displayedComponents: .date)
+                    .datePickerStyle(.wheel)
+                    .labelsHidden()
+                    Spacer()
+                    Button("🗓️ Latest Draw") {
+                        viewModel.latestResultAPI()
+                        if let latestResultDate = viewModel.result.latestResultDate.toDate() {
+                            date = latestResultDate
+                        }
                     }
                 }
-            }
-            .padding(.horizontal)
-            Spacer()
-            ScrollView {
+                Spacer()
                 if viewModel.result.fetchLatestStatus == 500 {
                     ProgressView("Loading...")
                         .offset(x: 0, y:200)
-                } else if viewModel.result.fetchLatestStatus == 200 {
+                } else if viewModel.result.fetchLatestStatus == 200 && viewModel.result.firstPrize != "-" {
                     VStack {
                         VStack {
                             PrizeHeaderView(prize: "First Prize", amount: "6,000,000")
@@ -86,11 +88,21 @@ struct CheckResultView: View {
                             PrizeNumberMultipleView(number: viewModel.result.fifthPrize)
                         }
                     }
+                } else {
+                    VStack {
+                        Text("🚧")
+                            .font(.system(size: 80))
+                        Text("No result available")
+                            .font(.system(.title3, weight: .light))
+                        Text("Please select another date")
+                            .font(.title2).bold()
+                    }
+                    .offset(x: 0, y:60)
+                    Spacer()
                 }
             }
             .navigationTitle("Prize Result")
             .padding(.horizontal)
-            
         }
         .onAppear(perform: {
             viewModel.latestResultAPI()

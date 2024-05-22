@@ -22,6 +22,8 @@ class CheckResultViewModel: ObservableObject {
         return prizeResult
     }
     
+    let firstDateOfResult: Date = Calendar.current.date(from: DateComponents(year: 2010, month: 3, day: 1))!
+    
     func numberSearchAPI(searchNum: String, date: String) {
         AF.request(
             "https://www.glo.or.th/api/checking/getcheckLotteryResult",
