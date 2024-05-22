@@ -13,6 +13,7 @@ struct ResultView: View {
     @Environment(\.isSearching) private var isSearching: Bool
     @Binding var text: String
     @Binding var date: Date
+    @Binding var isSearchDone: Bool
     
     var body: some View {
         if isSearching {
@@ -73,7 +74,7 @@ struct ResultView: View {
                                 }
                             case PrizeList.twoSuf.rawValue:
                                 HStack {
-                                    Text("Two Digits Sufix")
+                                    Text("Two Digits Suffix")
                                     Text("฿2,000")
                                 }
                             default:
@@ -91,10 +92,14 @@ struct ResultView: View {
             }
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
             .frame(height: 500)
+            .sensoryFeedback(.success, trigger: isSearchDone)
             .onChange(of: text) {
+                isSearchDone = false
                 if text.count == 6 {
-                    viewModel.result.userResult.removeAll()
                     viewModel.numberSearchAPI(searchNum: text, date: date.periodDate)
+                    if viewModel.result.fetchNumberStatus == 200 {
+                        isSearchDone.toggle()
+                    }
                 }
             }
         } else {
@@ -106,5 +111,6 @@ struct ResultView: View {
 #Preview {
     @State var text = "..."
     @State var date = Date()
-    return ResultView(text: $text, date: $date)
+    @State var isSearchDone = false
+    return ResultView(text: $text, date: $date, isSearchDone: $isSearchDone)
 }

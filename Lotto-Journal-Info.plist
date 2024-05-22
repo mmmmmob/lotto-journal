@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Add New</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>plus</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>firstView</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Summary</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>list.bullet.clipboard</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>secondView</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Check Result</string>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>1.magnifyingglass</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>thirdView</string>
+		</dict>
+	</array>
+</dict>
+</plist>
