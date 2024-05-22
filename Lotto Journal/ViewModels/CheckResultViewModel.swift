@@ -33,6 +33,13 @@ class CheckResultViewModel: ObservableObject {
                     let json = try JSON(data: data)
                     let pathResult: [JSONSubscriptType] = ["response", "result", 0, "status_data", 0, "reward"]
                     print(json[pathResult].string ?? "-")
+                    
+                    // Get Status
+                    let pathStatus: [JSONSubscriptType] = ["statusCode"]
+                    self.result.fetchStatus = 500
+                    DispatchQueue.main.async {
+                        self.result.fetchStatus = json[pathStatus].int ?? 500
+                    }
                 } catch {
                     print("Error parsing JSON: \(error)")
                 }
@@ -119,6 +126,12 @@ class CheckResultViewModel: ObservableObject {
                     for i in 0...99 {
                         let pathFifthPrize: [JSONSubscriptType] = ["response","result","data","fifth","number",i,"value"]
                         self.result.fifthPrize.append(json[pathFifthPrize].string ?? "-")
+                    }
+                    
+                    // Get Status
+                    let pathStatus: [JSONSubscriptType] = ["statusCode"]
+                    DispatchQueue.main.async {
+                        self.result.fetchStatus = json[pathStatus].int ?? 500
                     }
                 } catch {
                     print("Error parsing JSON: \(error)")
@@ -209,9 +222,16 @@ class CheckResultViewModel: ObservableObject {
                     
                     // Get Latest Result Date
                     let pathLatestDate: [JSONSubscriptType] = ["response","date"]
-                    var date = json[pathLatestDate].string ?? "-"
+                    let date = json[pathLatestDate].string ?? "-"
                     DispatchQueue.main.async {
                         self.result.latestResultDate = date
+                    }
+                    
+                    // Get Status
+                    let pathStatus: [JSONSubscriptType] = ["statusCode"]
+                    self.result.fetchStatus = 500
+                    DispatchQueue.main.async {
+                        self.result.fetchStatus = json[pathStatus].int ?? 500
                     }
                 } catch {
                     print("Error parsing JSON: \(error)")

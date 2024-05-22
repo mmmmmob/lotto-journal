@@ -7,6 +7,7 @@
 import Foundation
 
 struct ResultLotto {
+    // Store prize result
     var firstPrize: String = ""
     var threeDigitsPrefix: [String] = [""]
     var threeDigitsSuffix: [String] = [""]
@@ -17,5 +18,7 @@ struct ResultLotto {
     var fourthPrize: [String] = [""]
     var fifthPrize: [String] = [""]
     
+    // Identifying objects
     var latestResultDate: String = ""
+    var fetchStatus: Int = 500
 }
