@@ -44,6 +44,7 @@
 /* Begin PBXFileReference section */
 		4A068E8C2BFD276000D06D75 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		4A19774A2BFE02870032CC6B /* Prize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prize.swift; sourceTree = "<group>"; };
+		4A19774C2BFE53DC0032CC6B /* Lotto-Journal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Lotto-Journal-Info.plist"; sourceTree = SOURCE_ROOT; };
 		4A7DFE342BFD0525003A3969 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4A8C44072BFA747C000461B9 /* CheckResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResultView.swift; sourceTree = "<group>"; };
 		4A8C44092BFA748F000461B9 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		4AF0975B2BF9DA21003A813B /* Lotto Journal */ = {
 			isa = PBXGroup;
 			children = (
+				4A19774C2BFE53DC0032CC6B /* Lotto-Journal-Info.plist */,
 				4AF0976C2BF9DA3A003A813B /* Models */,
 				4AF0976D2BF9DA43003A813B /* Views */,
 				4A8C44102BFB2009000461B9 /* ViewModels */,
@@ -417,6 +419,7 @@
 				DEVELOPMENT_TEAM = NW4HLMMSCB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lotto-Journal-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lotto Journal";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -438,7 +441,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -453,6 +456,7 @@
 				DEVELOPMENT_TEAM = NW4HLMMSCB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lotto-Journal-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lotto Journal";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -474,7 +478,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
