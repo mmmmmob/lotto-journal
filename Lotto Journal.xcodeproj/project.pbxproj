@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A068E8D2BFD276000D06D75 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A068E8C2BFD276000D06D75 /* ResultView.swift */; };
+		4A19774B2BFE02870032CC6B /* Prize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A19774A2BFE02870032CC6B /* Prize.swift */; };
+		4A7DFE352BFD0526003A3969 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DFE342BFD0525003A3969 /* StringExtension.swift */; };
 		4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C44072BFA747C000461B9 /* CheckResultView.swift */; };
 		4A8C440A2BFA748F000461B9 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C44092BFA748F000461B9 /* SummaryView.swift */; };
 		4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8C440C2BFAFA75000461B9 /* DateExtension.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A068E8C2BFD276000D06D75 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		4A19774A2BFE02870032CC6B /* Prize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prize.swift; sourceTree = "<group>"; };
+		4A7DFE342BFD0525003A3969 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4A8C44072BFA747C000461B9 /* CheckResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResultView.swift; sourceTree = "<group>"; };
 		4A8C44092BFA748F000461B9 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		4A8C440C2BFAFA75000461B9 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -75,6 +81,7 @@
 				4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */,
 				4A8C44072BFA747C000461B9 /* CheckResultView.swift */,
 				4A8C44092BFA748F000461B9 /* SummaryView.swift */,
+				4A068E8C2BFD276000D06D75 /* ResultView.swift */,
 			);
 			name = PageView;
 			sourceTree = "<group>";
@@ -83,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8C440C2BFAFA75000461B9 /* DateExtension.swift */,
+				4A7DFE342BFD0525003A3969 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -127,8 +135,8 @@
 				4AF0976C2BF9DA3A003A813B /* Models */,
 				4AF0976D2BF9DA43003A813B /* Views */,
 				4A8C44102BFB2009000461B9 /* ViewModels */,
-				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
 				4A8C440B2BFAFA34000461B9 /* Extensions */,
+				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
 				4AF097622BF9DA24003A813B /* Assets.xcassets */,
 				4AF097642BF9DA24003A813B /* Preview Content */,
 			);
@@ -148,6 +156,7 @@
 			children = (
 				4AF097602BF9DA21003A813B /* MyLotto.swift */,
 				4A8C441D2BFB675B000461B9 /* ResultLotto.swift */,
+				4A19774A2BFE02870032CC6B /* Prize.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,12 +271,15 @@
 				4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */,
 				4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */,
 				4AF097612BF9DA21003A813B /* MyLotto.swift in Sources */,
+				4A068E8D2BFD276000D06D75 /* ResultView.swift in Sources */,
+				4A19774B2BFE02870032CC6B /* Prize.swift in Sources */,
 				4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */,
 				4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */,
 				4A8C441E2BFB675C000461B9 /* ResultLotto.swift in Sources */,
 				4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */,
 				4ABEF1922BFC42D300904D3E /* CheckResultViewModel.swift in Sources */,
 				4ABEF19B2BFC809700904D3E /* PrizeNumberMultipleView.swift in Sources */,
+				4A7DFE352BFD0526003A3969 /* StringExtension.swift in Sources */,
 				4A8C440A2BFA748F000461B9 /* SummaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
