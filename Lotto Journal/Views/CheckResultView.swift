@@ -12,14 +12,23 @@ struct CheckResultView: View {
     @StateObject var viewModel = CheckResultViewModel()
     @State var text: String = ""
     @State var date: Date = Date()
+    @State var isSearchDone: Bool = true
     
     var body: some View {
         NavigationStack {
-            ResultView(text: $text, date: $date)
+            ResultView(text: $text, date: $date, isSearchDone: $isSearchDone)
                 .searchable(text: $text, prompt: "Check Your Lottery")
                 .keyboardType(.numberPad)
-            DatePicker("🗓️ Draw Date", selection: $date
-                       , displayedComponents: .date)
+            HStack {
+                DatePicker("🗓️ Draw Date", selection: $date
+                           , displayedComponents: .date)
+                Button("Latest") {
+                    viewModel.latestResultAPI()
+                    if let latestResultDate = viewModel.result.latestResultDate.toDate() {
+                        date = latestResultDate
+                    }
+                }
+            }
             .padding(.horizontal)
             Spacer()
             ScrollView {
@@ -98,5 +107,5 @@ struct CheckResultView: View {
 }
 
 #Preview {
-    CheckResultView()
+    CheckResultView(isSearchDone: true)
 }
