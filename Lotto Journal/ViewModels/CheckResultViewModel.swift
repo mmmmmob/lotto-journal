@@ -42,7 +42,6 @@ class CheckResultViewModel: ObservableObject {
             case .success(let data):
                 do {
                     // Get Result Value as an Array Object
-                    self.result.userResult.removeAll(keepingCapacity: true)
                     let json = try JSON(data: data)
                     let pathResult: [JSONSubscriptType] = ["response", "result", 0, "status_data"]
                     DispatchQueue.main.async {
@@ -51,7 +50,6 @@ class CheckResultViewModel: ObservableObject {
                     
                     // Get Status
                     let pathStatus: [JSONSubscriptType] = ["statusCode"]
-                    self.result.fetchNumberStatus = 500
                     DispatchQueue.main.async {
                         self.result.fetchNumberStatus = json[pathStatus].int ?? 500
                     }

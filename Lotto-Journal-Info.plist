@@ -6,11 +6,11 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Add New</string>
+			<string>My Lottery</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
-			<string>plus</string>
+			<string>123.rectangle</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>firstView</string>
+			<string>myLottery</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
@@ -18,7 +18,7 @@
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>list.bullet.clipboard</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>secondView</string>
+			<string>summary</string>
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
@@ -26,7 +26,7 @@
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>1.magnifyingglass</string>
 			<key>UIApplicationShortcutItemType</key>
-			<string>thirdView</string>
+			<string>result</string>
 		</dict>
 	</array>
 </dict>
