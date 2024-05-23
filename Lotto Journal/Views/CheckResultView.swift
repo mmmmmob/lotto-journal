@@ -12,11 +12,10 @@ struct CheckResultView: View {
     @StateObject var viewModel = CheckResultViewModel()
     @State var text: String = ""
     @State var date: Date = Date()
-    @State var isSearchDone: Bool = true
     
     var body: some View {
         NavigationStack {
-            ResultView(text: $text, date: $date, isSearchDone: $isSearchDone)
+            ResultView(text: $text, date: $date)
                 .searchable(text: $text, prompt: "Check Your Lottery")
                 .keyboardType(.numberPad)
             ScrollView {
@@ -36,7 +35,7 @@ struct CheckResultView: View {
                 Spacer()
                 if viewModel.result.fetchLatestStatus == 500 {
                     ProgressView("Loading...")
-                        .offset(x: 0, y:200)
+                        .offset(x: 0, y:80)
                 } else if viewModel.result.fetchLatestStatus == 200 && viewModel.result.firstPrize != "-" {
                     VStack {
                         VStack {
@@ -119,5 +118,5 @@ struct CheckResultView: View {
 }
 
 #Preview {
-    CheckResultView(isSearchDone: true)
+    CheckResultView()
 }
