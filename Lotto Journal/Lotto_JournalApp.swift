@@ -10,6 +10,10 @@ import SwiftData
 
 @main
 struct Lotto_JournalApp: App {
+    
+    private let qaService = QAService.shared
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             MyLotto.self,
@@ -26,7 +30,9 @@ struct Lotto_JournalApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView(selectedTab: 1)
+                .environmentObject(qaService)
+                .modelContainer(sharedModelContainer)
         }
-        .modelContainer(sharedModelContainer)
+        
     }
 }

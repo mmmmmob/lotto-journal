@@ -26,6 +26,9 @@
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
 		4AF097662BF9DA24003A813B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097652BF9DA24003A813B /* Preview Assets.xcassets */; };
 		4AF097742BF9E2F0003A813B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF097732BF9E2F0003A813B /* MainTabView.swift */; };
+		4AFEAC342BFF764E00BA40AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEAC332BFF764E00BA40AD /* SceneDelegate.swift */; };
+		4AFEAC362BFF77BB00BA40AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEAC352BFF77BB00BA40AD /* AppDelegate.swift */; };
+		4AFEAC382BFF795100BA40AD /* QuickActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEAC372BFF795100BA40AD /* QuickActionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +64,9 @@
 		4AF097622BF9DA24003A813B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AF097652BF9DA24003A813B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AF097732BF9E2F0003A813B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		4AFEAC332BFF764E00BA40AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4AFEAC352BFF77BB00BA40AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4AFEAC372BFF795100BA40AD /* QuickActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,7 @@
 				4A8C44102BFB2009000461B9 /* ViewModels */,
 				4A8C440B2BFAFA34000461B9 /* Extensions */,
 				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
+				4AFEAC322BFF762300BA40AD /* QuickActions */,
 				4AF097622BF9DA24003A813B /* Assets.xcassets */,
 				4AF097642BF9DA24003A813B /* Preview Content */,
 			);
@@ -187,6 +194,16 @@
 				4AF097732BF9E2F0003A813B /* MainTabView.swift */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		4AFEAC322BFF762300BA40AD /* QuickActions */ = {
+			isa = PBXGroup;
+			children = (
+				4AFEAC332BFF764E00BA40AD /* SceneDelegate.swift */,
+				4AFEAC352BFF77BB00BA40AD /* AppDelegate.swift */,
+				4AFEAC372BFF795100BA40AD /* QuickActionType.swift */,
+			);
+			path = QuickActions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,10 +288,12 @@
 				4ABEF1962BFC6F5500904D3E /* PrizeHeaderView.swift in Sources */,
 				4ABEF1982BFC715E00904D3E /* PrizeNumberView.swift in Sources */,
 				4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */,
+				4AFEAC382BFF795100BA40AD /* QuickActionType.swift in Sources */,
 				4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */,
 				4AF097612BF9DA21003A813B /* MyLotto.swift in Sources */,
 				4A068E8D2BFD276000D06D75 /* ResultView.swift in Sources */,
 				4A19774B2BFE02870032CC6B /* Prize.swift in Sources */,
+				4AFEAC342BFF764E00BA40AD /* SceneDelegate.swift in Sources */,
 				4A8C44082BFA747C000461B9 /* CheckResultView.swift in Sources */,
 				4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */,
 				4A8C441E2BFB675C000461B9 /* ResultLotto.swift in Sources */,
@@ -282,6 +301,7 @@
 				4ABEF1922BFC42D300904D3E /* CheckResultViewModel.swift in Sources */,
 				4ABEF19B2BFC809700904D3E /* PrizeNumberMultipleView.swift in Sources */,
 				4A7DFE352BFD0526003A3969 /* StringExtension.swift in Sources */,
+				4AFEAC362BFF77BB00BA40AD /* AppDelegate.swift in Sources */,
 				4A8C440A2BFA748F000461B9 /* SummaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

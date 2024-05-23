@@ -13,7 +13,7 @@ struct ResultView: View {
     @Environment(\.isSearching) private var isSearching: Bool
     @Binding var text: String
     @Binding var date: Date
-    @Binding var isSearchDone: Bool
+    @State var isSearchDone: Bool = false
     
     var body: some View {
         if isSearching {
@@ -24,12 +24,7 @@ struct ResultView: View {
                     Text("Enter lottery number above")
                         .font(.title2).bold()
                 }
-                else if viewModel.result.fetchNumberStatus == 200 && viewModel.userPrizeResult.isEmpty {
-                    Text("😢")
-                        .font(.system(size: 80))
-                    Text("Sorry, you didn't win...")
-                        .font(.title2).bold()
-                } else if viewModel.result.fetchNumberStatus == 200 && !viewModel.userPrizeResult.isEmpty {
+                else if viewModel.result.fetchNumberStatus == 200 && !viewModel.userPrizeResult.isEmpty {
                     Text("🎉")
                         .font(.system(size: 80))
                     Text("Yay! You won!")
@@ -86,7 +81,20 @@ struct ResultView: View {
                         }
                     }
                     .font(.title2).bold()
-                } else {
+                }
+                else if viewModel.result.fetchNumberStatus == 200 && viewModel.userPrizeResult.isEmpty {
+                    Text("😢")
+                        .font(.system(size: 80))
+                    Text("Sorry, you didn't win...")
+                        .font(.title2).bold()
+                }
+                else if viewModel.result.fetchNumberStatus == 500 && viewModel.userPrizeResult.isEmpty {
+                    Text("👨🏻‍💻")
+                        .font(.system(size: 80))
+                    Text("The results are in...")
+                        .font(.title2).bold()
+                }
+                else {
                     ProgressView("Loading...")
                 }
             }
@@ -94,12 +102,12 @@ struct ResultView: View {
             .frame(height: 500)
             .sensoryFeedback(.success, trigger: isSearchDone)
             .onChange(of: text) {
-                isSearchDone = false
                 if text.count == 6 {
                     viewModel.numberSearchAPI(searchNum: text, date: date.periodDate)
-                    if viewModel.result.fetchNumberStatus == 200 {
-                        isSearchDone.toggle()
-                    }
+                    isSearchDone.toggle()
+                } else if text.count < 6 {
+                    viewModel.result.userResult.removeAll()
+                    viewModel.result.fetchNumberStatus = 500
                 }
             }
         } else {
@@ -112,5 +120,5 @@ struct ResultView: View {
     @State var text = "..."
     @State var date = Date()
     @State var isSearchDone = false
-    return ResultView(text: $text, date: $date, isSearchDone: $isSearchDone)
+    return ResultView(text: $text, date: $date)
 }
