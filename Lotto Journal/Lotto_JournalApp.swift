@@ -31,8 +31,7 @@ struct Lotto_JournalApp: App {
         WindowGroup {
             MainTabView(selectedTab: 1)
                 .environmentObject(qaService)
-                .modelContainer(sharedModelContainer)
         }
-        
+        .modelContainer(sharedModelContainer)
     }
 }
