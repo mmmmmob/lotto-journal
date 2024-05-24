@@ -25,4 +25,5 @@ struct ResultLotto {
     var fetchNumberStatus: Int = 500
     var fetchLatestStatus: Int = 500
     var fetchDrawStatus: Int = 500
+    var checkResultStatus: String = ""
 }
