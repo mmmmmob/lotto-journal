@@ -16,7 +16,7 @@ struct Lotto_JournalApp: App {
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            MyLotto.self,
+            MyLottery.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
