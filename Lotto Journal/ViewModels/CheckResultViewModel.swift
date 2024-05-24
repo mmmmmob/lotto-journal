@@ -77,6 +77,12 @@ class CheckResultViewModel: ObservableObject {
                 do {
                     let json = try JSON(data: data)
                     
+                    // Check Result of Date
+                    let pathCheckResult: [JSONSubscriptType] = ["response","responseStatus","status"]
+                    DispatchQueue.main.async {
+                        self.result.checkResultStatus = json[pathCheckResult].string ?? "Unsuccess"
+                    }
+                    
                     // First Prize decode to struct
                     let pathFirstPrize: [JSONSubscriptType] = ["response","result","data","first","number",0,"value"]
                     self.result.firstPrize = json[pathFirstPrize].string ?? "-"
