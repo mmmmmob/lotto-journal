@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class MyLotto {
+final class MyLottery {
     var timestamp: Date
     
     init(timestamp: Date) {
