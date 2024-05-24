@@ -22,7 +22,7 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Check Result</string>
+			<string>Prize Result</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>1.magnifyingglass</string>
 			<key>UIApplicationShortcutItemType</key>
