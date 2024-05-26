@@ -37,42 +37,42 @@ struct ResultView: View {
                         VStack {
                             ForEach(viewModel.userPrizeResult, id: \.self) { result in
                                 switch result {
-                                case PrizeList.first.rawValue:
+                                case Prize.first.rawValue:
                                     HStack {
                                         Text("First Prize")
                                         Text("฿6,000,000")
                                     }
-                                case PrizeList.second.rawValue:
+                                case Prize.second.rawValue:
                                     HStack {
                                         Text("Second Prize")
                                         Text("฿200,000")
                                     }
-                                case PrizeList.third.rawValue:
+                                case Prize.third.rawValue:
                                     HStack {
                                         Text("Third Prize")
                                         Text("฿80,000")
                                     }
-                                case PrizeList.fourth.rawValue:
+                                case Prize.fourth.rawValue:
                                     HStack {
                                         Text("Fourth Prize")
                                         Text("฿40,000")
                                     }
-                                case PrizeList.firstNB.rawValue:
+                                case Prize.firstNB.rawValue:
                                     HStack {
                                         Text("First Prize Neighbors")
                                         Text("฿100,000")
                                     }
-                                case PrizeList.threePre.rawValue:
+                                case Prize.threePre.rawValue:
                                     HStack {
                                         Text("Three Digits Prefix")
                                         Text("฿4,000")
                                     }
-                                case PrizeList.threeSuf.rawValue:
+                                case Prize.threeSuf.rawValue:
                                     HStack {
                                         Text("Three Digits Suffix")
                                         Text("฿4,000")
                                     }
-                                case PrizeList.twoSuf.rawValue:
+                                case Prize.twoSuf.rawValue:
                                     HStack {
                                         Text("Two Digits Suffix")
                                         Text("฿2,000")

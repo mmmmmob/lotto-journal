@@ -1,5 +1,5 @@
 {
-  "originHash" : "c5817b7f9139dceb19add69e014955a9a07f4614eccc3abdec838ae51b25e877",
+  "originHash" : "bcf1d5427917aa0282bf8ea141b263e93cf6d79ec43e246b3b108cddd9b6ab0f",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
         "version" : "5.9.1"
+      }
+    },
+    {
+      "identity" : "otpview-swiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mmmmmob/otpview-swiftui",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4e8b2faf3df81c9fb92e11012fdb68c053e7afbe"
       }
     },
     {

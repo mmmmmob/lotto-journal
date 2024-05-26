@@ -14,6 +14,7 @@ struct SummaryView: View {
                 Image(systemName: "rectangle.grid.2x2.fill")
                     .font(.largeTitle)
                     .foregroundColor(.teal)
+                    .padding(.bottom)
                 Text("Summary")
             }
             .navigationTitle("Summary")

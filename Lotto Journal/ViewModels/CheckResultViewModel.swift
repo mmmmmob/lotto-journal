@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class CheckResultViewModel: ObservableObject {
     
-    @Published var result = ResultLotto()
+    @Published var result = Result()
     
     var userPrizeResult: [String] {
         var prizeResult = [String]()
