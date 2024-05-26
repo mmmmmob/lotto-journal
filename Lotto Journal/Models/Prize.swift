@@ -5,7 +5,7 @@
 //  Created by Theppitak M. on 22.05.2024.
 //
 
-public enum PrizeList: String {
+public enum Prize: String {
     case first = "รางวัลที่ 1"
     case firstNB = "รางวัลข้างเคียงรางวัลที่ 1"
     case second = "รางวัลที่ 2"

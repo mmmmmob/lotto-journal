@@ -14,24 +14,11 @@ struct Lotto_JournalApp: App {
     private let qaService = QAService.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            MyLotto.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     var body: some Scene {
         WindowGroup {
             MainTabView(selectedTab: 1)
                 .environmentObject(qaService)
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: Lottery.self)
     }
 }
