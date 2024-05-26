@@ -9,7 +9,9 @@ import SwiftUI
 import OTPView
 
 struct AddMyLotteryView: View {
-    
+        
+    @StateObject private var apiCall = CheckResultViewModel()
+
     @Environment(\.dismiss) var isDismiss
     @State var number: String = ""
     @State var drawDate: Date = Date()
@@ -28,15 +30,16 @@ struct AddMyLotteryView: View {
                         in: 1...100
                     ) {
                         HStack {
-                            Text("🔢 Amount Bought")
+                            Text("🔢  Amount Bought")
+                                .bold()
                             Spacer()
                             Text("\(amountBought)")
-                                .bold()
                                 .padding(.trailing)
                         }
                     }
                 }
-                DatePicker("🗓️ Draw Date", selection: $drawDate, displayedComponents: .date)
+                DatePicker("🗓️  Draw Date", selection: $drawDate, displayedComponents: .date)
+                    .bold()
                 Button {
                     print(number)
                     print(drawDate.params)
@@ -44,6 +47,7 @@ struct AddMyLotteryView: View {
                     isDismiss()
                 } label: {
                     Text("Add")
+                        .bold()
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
@@ -63,7 +67,14 @@ struct AddMyLotteryView: View {
                 .foregroundStyle(Color.red)
             }
         }
-        
+        .onAppear(perform: {
+            apiCall.latestResultAPI()
+        })
+        .onChange(of: apiCall.result.latestResultDate) {
+            if let latestResultDate = apiCall.result.latestResultDate.toDate() {
+                drawDate = latestResultDate.addingTimeInterval(1_382_400)
+            }
+        }
     }
 }
 
