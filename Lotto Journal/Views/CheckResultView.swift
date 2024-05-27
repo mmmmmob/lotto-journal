@@ -20,7 +20,7 @@ struct CheckResultView: View {
                 .keyboardType(.numberPad)
             ScrollView {
                 VStack {
-                    DatePicker("🗓️ Draw Date", selection: $date, in: viewModel.firstDayOfResult...date
+                    DatePicker("🗓️ Draw Date", selection: $date, in: viewModel.firstDayOfResult...(viewModel.result.latestResultDate.toDate() ?? Date())
                                , displayedComponents: .date)
                     .datePickerStyle(.wheel)
                     .labelsHidden()

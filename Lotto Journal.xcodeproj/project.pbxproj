@@ -557,7 +557,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mmmmmob/otpview-swiftui";
 			requirement = {
-				branch = main;
+				branch = 4e8b2fa;
 				kind = branch;
 			};
 		};
