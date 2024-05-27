@@ -24,6 +24,7 @@
 		4ABEF1962BFC6F5500904D3E /* PrizeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF1952BFC6F5500904D3E /* PrizeHeaderView.swift */; };
 		4ABEF1982BFC715E00904D3E /* PrizeNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF1972BFC715E00904D3E /* PrizeNumberView.swift */; };
 		4ABEF19B2BFC809700904D3E /* PrizeNumberMultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF19A2BFC809700904D3E /* PrizeNumberMultipleView.swift */; };
+		4AD9DD4E2C04AA1600EE7866 /* MyLotteryHeaderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9DD4D2C04AA1600EE7866 /* MyLotteryHeaderListView.swift */; };
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
 		4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */; };
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 		4ABEF1952BFC6F5500904D3E /* PrizeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeHeaderView.swift; sourceTree = "<group>"; };
 		4ABEF1972BFC715E00904D3E /* PrizeNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNumberView.swift; sourceTree = "<group>"; };
 		4ABEF19A2BFC809700904D3E /* PrizeNumberMultipleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNumberMultipleView.swift; sourceTree = "<group>"; };
+		4AD9DD4D2C04AA1600EE7866 /* MyLotteryHeaderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryHeaderListView.swift; sourceTree = "<group>"; };
 		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
 		4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,14 @@
 			name = CheckResult;
 			sourceTree = "<group>";
 		};
+		4AD9DD4C2C04A59E00EE7866 /* MyLottery */ = {
+			isa = PBXGroup;
+			children = (
+				4AD9DD4D2C04AA1600EE7866 /* MyLotteryHeaderListView.swift */,
+			);
+			name = MyLottery;
+			sourceTree = "<group>";
+		};
 		4AF097502BF9DA21003A813B = {
 			isa = PBXGroup;
 			children = (
@@ -146,14 +156,14 @@
 		4AF0975B2BF9DA21003A813B /* Lotto Journal */ = {
 			isa = PBXGroup;
 			children = (
-				4A19774C2BFE53DC0032CC6B /* Lotto-Journal-Info.plist */,
 				4AF0976C2BF9DA3A003A813B /* Models */,
 				4AF0976D2BF9DA43003A813B /* Views */,
 				4A8C44102BFB2009000461B9 /* ViewModels */,
 				4A8C440B2BFAFA34000461B9 /* Extensions */,
-				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
 				4AFEAC322BFF762300BA40AD /* QuickActions */,
+				4A19774C2BFE53DC0032CC6B /* Lotto-Journal-Info.plist */,
 				4AF097622BF9DA24003A813B /* Assets.xcassets */,
+				4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */,
 				4AF097642BF9DA24003A813B /* Preview Content */,
 			);
 			path = "Lotto Journal";
@@ -190,6 +200,7 @@
 		4AF0976F2BF9DB75003A813B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4AD9DD4C2C04A59E00EE7866 /* MyLottery */,
 				4ABEF1992BFC716500904D3E /* CheckResult */,
 			);
 			name = Components;
@@ -300,6 +311,7 @@
 				4ABEF1982BFC715E00904D3E /* PrizeNumberView.swift in Sources */,
 				4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */,
 				4AFEAC382BFF795100BA40AD /* QuickActionType.swift in Sources */,
+				4AD9DD4E2C04AA1600EE7866 /* MyLotteryHeaderListView.swift in Sources */,
 				4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */,
 				4A068E8D2BFD276000D06D75 /* ResultView.swift in Sources */,
 				4A19774B2BFE02870032CC6B /* Prize.swift in Sources */,
@@ -557,7 +569,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mmmmmob/otpview-swiftui";
 			requirement = {
-				branch = main;
+				branch = 4e8b2fa;
 				kind = branch;
 			};
 		};
