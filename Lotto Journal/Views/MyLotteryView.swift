@@ -15,6 +15,16 @@ struct MyLotteryView: View {
     @State var isAddding: Bool = false
     @State var searchNumber: String = ""
     
+    private var searchResult: [Lottery] {
+        if searchNumber.isEmpty {
+            return lotteries
+        } else {
+            return lotteries.filter {
+                $0.number.contains(searchNumber)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             Group {
@@ -22,24 +32,24 @@ struct MyLotteryView: View {
                     ContentUnavailableView("Enter your first lottery", systemImage: "wand.and.stars")
                 } else {
                     List {
-                        ForEach(lotteries) { lottery in
+                        ForEach(searchResult) { number in
                             HStack {
                                 HStack {
-                                    Text(lottery.number)
+                                    Text(number.number)
                                         .font(.system(.headline, design: .monospaced, weight: .semibold))
                                         .tracking(7)
-                                    if lottery.amount > 1 {
-                                        Text("x \(lottery.amount)")
+                                    if number.amount > 1 {
+                                        Text("x \(number.amount)")
                                             .font(.system(.caption, weight: .thin))
                                             .foregroundStyle(.secondary)
                                     }
                                 }
                                 Spacer()
                                 HStack(spacing: 5) {
-                                    lottery.tagSymbol
-                                        .foregroundStyle(lottery.tagColor)
+                                    number.tagSymbol
+                                        .foregroundStyle(number.tagColor)
                                         .imageScale(.small)
-                                    Text(lottery.status.description)
+                                    Text(number.status.description)
                                         .font(.system(.subheadline, weight: .light))
                                 }
                             }
