@@ -69,6 +69,10 @@ extension Date {
         return "\(self.year)-\(self.monthDouble)-\(self.dateDouble)"
     }
     
+    var fullStringDate: String {
+        return "\(self.nameOfMonth) \(self.dateSingle), \(self.year)"
+    }
+    
     var params: Parameters {
         return [
             "date": self.dateSingle,
