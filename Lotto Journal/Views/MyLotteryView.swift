@@ -10,62 +10,55 @@ import SwiftData
 
 struct MyLotteryView: View {
     
-    @Query(sort: \Lottery.amount, order: .reverse) private var lotteries: [Lottery]
+    @Query(sort: \DrawDate.date, order: .reverse) private var dates: [DrawDate]
+    @Query private var lotteries: [Lottery]
     @Environment(\.modelContext) private var modelContext
     @State var isAddding: Bool = false
     @State var searchNumber: String = ""
     
-    private var searchResult: [Lottery] {
-        if searchNumber.isEmpty {
-            return lotteries
-        } else {
-            return lotteries.filter {
-                $0.number.contains(searchNumber)
-            }
-        }
-    }
-    
     var body: some View {
         NavigationStack {
-            Group {
-                if lotteries.isEmpty {
-                    ContentUnavailableView("Enter your first lottery", systemImage: "wand.and.stars")
-                } else {
-                    List {
-                        ForEach(searchResult) { number in
-                            HStack {
+            List {
+                ForEach(dates) { date in
+                    if date.lotteries.count > 0 {
+                        Section {
+                            ForEach(date.lotteries) { lottery in
                                 HStack {
-                                    Text(number.number)
-                                        .font(.system(.headline, design: .monospaced, weight: .semibold))
-                                        .tracking(7)
-                                    if number.amount > 1 {
-                                        Text("x \(number.amount)")
-                                            .font(.system(.caption, weight: .thin))
-                                            .foregroundStyle(.secondary)
+                                    HStack {
+                                        Text(lottery.number)
+                                            .font(.system(.headline, design: .monospaced, weight: .semibold))
+                                            .tracking(7)
+                                        let amountBought = lottery.amount
+                                        if amountBought > 1 {
+                                            Text("x \(amountBought)")
+                                                .font(.system(.caption, weight: .thin))
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+                                    Spacer()
+                                    HStack(spacing: 5) {
+                                        lottery.tagSymbol
+                                            .foregroundStyle(lottery.tagColor)
+                                            .imageScale(.small)
+                                        Text(lottery.status.description)
+                                            .font(.system(.subheadline, weight: .light))
                                     }
                                 }
-                                Spacer()
-                                HStack(spacing: 5) {
-                                    number.tagSymbol
-                                        .foregroundStyle(number.tagColor)
-                                        .imageScale(.small)
-                                    Text(number.status.description)
-                                        .font(.system(.subheadline, weight: .light))
+                            }
+                            .onDelete(perform: { indexSet in
+                                indexSet.forEach { index in
+                                    let lottery = date.lotteries[index]
+                                    modelContext.delete(lottery)
                                 }
-                            }
+                            })
+                        } header: {
+                            Text(date.date.periodDate)
                         }
-                        .onDelete(perform: { indexSet in
-                            indexSet.forEach { index in
-                                let lottery = lotteries[index]
-                                modelContext.delete(lottery)
-                            }
-                        })
+                        .headerProminence(.increased)
                     }
-                    .listStyle(.plain)
                 }
             }
-            .searchable(text: $searchNumber)
-            .keyboardType(.numberPad)
+            .listStyle(.plain)
             .navigationTitle("My Lotter\(lotteries.count > 1 ? "ies" : "y")")
             .toolbar {
                 if !lotteries.isEmpty {
@@ -77,12 +70,12 @@ struct MyLotteryView: View {
                     Button(action: {
                         isAddding.toggle()
                     }, label: {
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: "plus")
                     })
                 }
             }
             .sheet(isPresented: $isAddding) {
-                AddMyLotteryView(amountBought: 1)
+                AddMyLotteryView()
                     .presentationDetents([.medium])
             }
         }
@@ -91,5 +84,5 @@ struct MyLotteryView: View {
 
 #Preview {
     MyLotteryView()
-        .modelContainer(for: Lottery.self, inMemory: true)
+        .modelContainer(for: DrawDate.self, inMemory: true)
 }
