@@ -47,7 +47,7 @@ struct MyLotteryView: View {
                             }
                             .onDelete(perform: { indexSet in
                                 indexSet.forEach { index in
-                                    let lottery = lotteries[index]
+                                    let lottery = date.lotteries[index]
                                     modelContext.delete(lottery)
                                 }
                             })
