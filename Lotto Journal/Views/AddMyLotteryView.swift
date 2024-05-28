@@ -10,9 +10,9 @@ import SwiftData
 import OTPView
 
 struct AddMyLotteryView: View {
-        
+    
     @StateObject private var apiCall = CheckResultViewModel()
-
+    
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var isDismiss
     @State var number: String = ""
@@ -43,8 +43,10 @@ struct AddMyLotteryView: View {
                 DatePicker("🗓️  Draw Date", selection: $drawDate, displayedComponents: .date)
                     .bold()
                 Button {
+                    let newDrawDate = DrawDate(date: drawDate)
                     let newLottery = Lottery(number: number, amount: amountBought)
-                    modelContext.insert(newLottery)
+                    modelContext.insert(newDrawDate)
+                    newDrawDate.lotteries.append(newLottery)
                     isDismiss()
                 } label: {
                     Text("Add")

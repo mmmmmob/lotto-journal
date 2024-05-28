@@ -14,11 +14,13 @@ class Lottery {
     var number: String
     var amount: Int
     var status: Status
+    var drawDate: DrawDate?
     
-    init(number: String, amount: Int, status: Status = .isWaiting) {
+    init(number: String, amount: Int, drawDate: DrawDate? = nil, status: Status = .isWaiting) {
         self.number = number
         self.amount = amount
         self.status = status
+        self.drawDate = drawDate
     }
     
     var investment: Int {
@@ -56,11 +58,11 @@ enum Status: Int, Codable, Identifiable, CaseIterable {
     var description: String {
         switch self {
         case .isWaiting:
-            "Waiting for Result"
+            "Waiting for Result🗿"
         case .doesWon:
-            "You Won!"
+            "You Won! 🎉"
         case .doesNotWon:
-            "Didn't Win..."
+            "Didn't Win 😢"
         }
         
     }
