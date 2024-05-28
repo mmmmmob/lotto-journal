@@ -14,9 +14,9 @@ class Lottery {
     var number: String
     var amount: Int
     var status: Status
-    var drawDate: DrawDate?
+    @Relationship(deleteRule: .nullify, inverse: \DrawDate.lotteries) var drawDate: DrawDate?
     
-    init(number: String, amount: Int, drawDate: DrawDate? = nil, status: Status = .isWaiting) {
+    init(number: String, amount: Int, status: Status = .isWaiting, drawDate: DrawDate? = nil) {
         self.number = number
         self.amount = amount
         self.status = status

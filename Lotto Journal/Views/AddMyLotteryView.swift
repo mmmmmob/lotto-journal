@@ -13,11 +13,14 @@ struct AddMyLotteryView: View {
     
     @StateObject private var apiCall = CheckResultViewModel()
     
+    @Query private var listedDrawDate: [DrawDate]
+    
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var isDismiss
-    @State var number: String = ""
-    @State var drawDate: Date = Date()
-    @State var amountBought: Int
+    
+    @State private var number: String = ""
+    @State private var amountBought: Int = 1
+    @State private var drawDate = Date()
     
     var body: some View {
         NavigationStack {
@@ -43,10 +46,7 @@ struct AddMyLotteryView: View {
                 DatePicker("🗓️  Draw Date", selection: $drawDate, displayedComponents: .date)
                     .bold()
                 Button {
-                    let newDrawDate = DrawDate(date: drawDate)
-                    let newLottery = Lottery(number: number, amount: amountBought)
-                    modelContext.insert(newDrawDate)
-                    newDrawDate.lotteries.append(newLottery)
+                    addNewLottery()
                     isDismiss()
                 } label: {
                     Text("Add")
@@ -82,8 +82,21 @@ struct AddMyLotteryView: View {
             }
         }
     }
+    
+    private func addNewLottery() {
+        let newDrawDate = DrawDate(date: drawDate)
+        let newLottery = Lottery(number: number, amount: amountBought)
+        
+        if !listedDrawDate.contains(where: {$0.date == drawDate}) {
+            modelContext.insert(newDrawDate)
+            newDrawDate.lotteries.append(newLottery)
+        } else {
+            let filteredDrawDate = listedDrawDate.filter({$0.date == drawDate})
+            filteredDrawDate[0].lotteries.append(newLottery)
+        }
+    }
 }
 
 #Preview {
-    AddMyLotteryView(amountBought: 1)
+    AddMyLotteryView()
 }

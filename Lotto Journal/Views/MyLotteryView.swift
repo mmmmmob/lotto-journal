@@ -58,7 +58,7 @@ struct MyLotteryView: View {
                     }
                 }
             }
-            .listStyle(.insetGrouped)
+            .listStyle(.plain)
             .navigationTitle("My Lotter\(lotteries.count > 1 ? "ies" : "y")")
             .toolbar {
                 if !lotteries.isEmpty {
@@ -75,7 +75,7 @@ struct MyLotteryView: View {
                 }
             }
             .sheet(isPresented: $isAddding) {
-                AddMyLotteryView(amountBought: 1)
+                AddMyLotteryView()
                     .presentationDetents([.medium])
             }
         }

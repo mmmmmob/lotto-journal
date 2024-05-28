@@ -11,29 +11,9 @@ import SwiftData
 @Model
 class DrawDate {
     var date: Date
-    @Relationship(deleteRule: .cascade, inverse: \Lottery.drawDate) var lotteries = [Lottery]()
+    var lotteries = [Lottery]()
     
     init(date: Date) {
         self.date = date
     }
-    
-    /*
-    var sumOfInvestment: Int {
-        return 0
-    }
-    var sumOfPrizeWon: Int {
-        return 0
-    }
-    var profitAndLoss: Int {
-        return 0
-    }
-    var finalAmountBought: Int {
-        return 0
-    }
-    var finalAmountWon: Int {
-        return 0
-    }
-    */
-    
-    // var summary: Summary?
 }
