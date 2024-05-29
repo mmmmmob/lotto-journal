@@ -21,8 +21,8 @@ struct MyLotteryView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if dates.isEmpty {
-                    ContentUnavailableView("Add your first lottery above", systemImage: "wand.and.stars")
+                if dates.isEmpty || lotteries.isEmpty {
+                    ContentUnavailableView("Tap \(Image(systemName: "plus.circle")) above to log your lottery", systemImage: "wand.and.stars")
                 } else {
                     List {
                         ForEach(dates) { date in
@@ -89,7 +89,7 @@ struct MyLotteryView: View {
                     Button(action: {
                         isAdding.toggle()
                     }, label: {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle")
                     })
                 }
             }
