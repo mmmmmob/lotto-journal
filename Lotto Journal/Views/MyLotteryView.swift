@@ -22,14 +22,18 @@ struct MyLotteryView: View {
         NavigationStack {
             Group {
                 if dates.isEmpty || lotteries.isEmpty {
-                    ContentUnavailableView("Tap \(Image(systemName: "plus.circle")) above to log your lottery", systemImage: "wand.and.stars")
+                    ContentUnavailableView(
+                        "No Lottery to Display",
+                        systemImage: "plus.rectangle.on.rectangle",
+                        description: Text("Tap \(Image(systemName: "plus.circle")) above to log your first one")
+                    )
                 } else {
                     List {
                         ForEach(dates) { date in
                             if date.lotteries.count > 0 {
                                 Section {
                                     ForEach(date.lotteries) { lottery in
-                                        HStack {
+                                        HStack(alignment: .center) {
                                             HStack {
                                                 Text(lottery.number)
                                                     .font(.system(.headline, design: .monospaced, weight: .semibold))
@@ -58,17 +62,27 @@ struct MyLotteryView: View {
                                         }
                                     })
                                 } header: {
-                                    if let latestResultDate = apiCall.result.latestResultDate.toDate() {
-                                        let upcomingDate = latestResultDate.addingTimeInterval(1_382_400)
-                                        if date.date == upcomingDate {
-                                            Text("Upcoming Draw")
-                                        } else if date.date == latestResultDate {
-                                            Text("Latest Draw")
+                                    HStack(alignment: .firstTextBaseline) {
+                                        if let latestResultDate = apiCall.result.latestResultDate.toDate() {
+                                            let upcomingDate = latestResultDate.upcomingDrawDate
+                                            if date.date == upcomingDate {
+                                                Text("Upcoming Draw")
+                                            } else if date.date == latestResultDate {
+                                                Text("Latest Draw")
+                                            } else {
+                                                Text(date.date.fullStringDate)
+                                            }
                                         } else {
-                                            Text(date.date.fullStringDate)
+                                            Text(date.date.fullStringDate) // display fullStringDate while determine date from API
                                         }
-                                    } else {
-                                        Text(date.date.fullStringDate) // display fullStringDatee while determine date from API
+                                        Spacer()
+                                        HStack(alignment: .center) {
+                                            Text("Total investment: ")
+                                            ForEach(date.lotteries) { result in
+                                                Text("\(result.investmentPerLottery)")
+                                            }
+                                        }
+                                        .font(.system(.caption, design: .default, weight: .light))
                                     }
                                 }
                                 .headerProminence(.increased)
