@@ -23,7 +23,7 @@ class Lottery {
         self.drawDate = drawDate
     }
     
-    var investment: Int {
+    var investmentPerLottery: Int {
         return amount * 80
     }
     

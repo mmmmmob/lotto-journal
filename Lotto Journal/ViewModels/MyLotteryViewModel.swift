@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
+import SwiftData
+
+struct MyLotteryViewModel {
+    
+    var apiCall = CheckResultViewModel()
+    
+    
+}
