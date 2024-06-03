@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import Alamofire
+import SwiftyJSON
 
 struct MyLotteryView: View {
     
@@ -33,7 +35,7 @@ struct MyLotteryView: View {
                             if date.lotteries.count > 0 {
                                 Section {
                                     ForEach(date.lotteries) { lottery in
-                                        HStack(alignment: .center) {
+                                        HStack(alignment: .lastTextBaseline) {
                                             HStack {
                                                 Text(lottery.number)
                                                     .font(.system(.headline, design: .monospaced, weight: .semibold))
@@ -77,12 +79,9 @@ struct MyLotteryView: View {
                                         }
                                         Spacer()
                                         HStack(alignment: .center) {
-                                            Text("Total investment: ")
-                                            ForEach(date.lotteries) { result in
-                                                Text("\(result.investmentPerLottery)")
-                                            }
+                                            Text(String("฿\(date.totalInvestment)"))
                                         }
-                                        .font(.system(.caption, design: .default, weight: .light))
+                                        .font(.system(.callout, design: .default, weight: .semibold))
                                     }
                                 }
                                 .headerProminence(.increased)
@@ -114,7 +113,35 @@ struct MyLotteryView: View {
         }
         .onAppear(perform: {
             firstAPICall.latestResultAPI()
+            dates.forEach { date in
+                updateResultAPI(param: date.params)
+            }
         })
+    }
+    
+    func updateResultAPI(param: Parameters) {
+        AF.request(
+            "https://www.glo.or.th/api/checking/getcheckLotteryResult",
+            method: .post,
+            parameters: param,
+            encoding: JSONEncoding.prettyPrinted,
+            headers: nil)
+        .validate(statusCode: 200 ..< 299)
+        .responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    // Get Result Value as an Array Object
+                    let json = try JSON(data: data)
+                    let pathResult: [JSONSubscriptType] = ["response", "result"]
+                    print(json[pathResult].array ?? "No Response")
+                } catch {
+                    print("Error parsing JSON: \(error)")
+                }
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+            }
+        }
     }
 }
 
