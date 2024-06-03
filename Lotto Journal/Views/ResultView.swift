@@ -37,42 +37,42 @@ struct ResultView: View {
                         VStack {
                             ForEach(viewModel.userPrizeResult, id: \.self) { result in
                                 switch result {
-                                case Prize.first.rawValue:
+                                case Prize.first.stringPrize:
                                     HStack {
                                         Text("First Prize")
                                         Text("฿6,000,000")
                                     }
-                                case Prize.second.rawValue:
+                                case Prize.second.stringPrize:
                                     HStack {
                                         Text("Second Prize")
                                         Text("฿200,000")
                                     }
-                                case Prize.third.rawValue:
+                                case Prize.third.stringPrize:
                                     HStack {
                                         Text("Third Prize")
                                         Text("฿80,000")
                                     }
-                                case Prize.fourth.rawValue:
+                                case Prize.fourth.stringPrize:
                                     HStack {
                                         Text("Fourth Prize")
                                         Text("฿40,000")
                                     }
-                                case Prize.firstNB.rawValue:
+                                case Prize.firstNB.stringPrize:
                                     HStack {
                                         Text("First Prize Neighbors")
                                         Text("฿100,000")
                                     }
-                                case Prize.threePre.rawValue:
+                                case Prize.threePre.stringPrize:
                                     HStack {
                                         Text("Three Digits Prefix")
                                         Text("฿4,000")
                                     }
-                                case Prize.threeSuf.rawValue:
+                                case Prize.threeSuf.stringPrize:
                                     HStack {
                                         Text("Three Digits Suffix")
                                         Text("฿4,000")
                                     }
-                                case Prize.twoSuf.rawValue:
+                                case Prize.twoSuf.stringPrize:
                                     HStack {
                                         Text("Two Digits Suffix")
                                         Text("฿2,000")
@@ -123,7 +123,7 @@ struct ResultView: View {
                 } else if text.count < 6 {
                     viewModel.result.userResult.removeAll()
                     viewModel.result.fetchNumberStatus = 500
-                    viewModel.checkResultAPI(date.params)
+                    viewModel.drawDateResultAPI(date.params)
                     if viewModel.result.checkResultStatus == "Unsuccess" {
                         isDateCorrect = false
                     } else { isDateCorrect = true }

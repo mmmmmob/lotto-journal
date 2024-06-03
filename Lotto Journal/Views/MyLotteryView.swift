@@ -10,7 +10,7 @@ import SwiftData
 
 struct MyLotteryView: View {
     
-    @StateObject private var apiCall = CheckResultViewModel()
+    @StateObject private var firstAPICall = CheckResultViewModel()
     
     @Query(sort: \DrawDate.date, order: .reverse) private var dates: [DrawDate]
     @Query private var lotteries: [Lottery]
@@ -63,7 +63,7 @@ struct MyLotteryView: View {
                                     })
                                 } header: {
                                     HStack(alignment: .firstTextBaseline) {
-                                        if let latestResultDate = apiCall.result.latestResultDate.toDate() {
+                                        if let latestResultDate = firstAPICall.result.latestResultDate.toDate() {
                                             let upcomingDate = latestResultDate.upcomingDrawDate
                                             if date.date == upcomingDate {
                                                 Text("Upcoming Draw")
@@ -113,7 +113,7 @@ struct MyLotteryView: View {
             }
         }
         .onAppear(perform: {
-            apiCall.latestResultAPI()
+            firstAPICall.latestResultAPI()
         })
     }
 }

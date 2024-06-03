@@ -67,7 +67,7 @@ class CheckResultViewModel: ObservableObject {
     }
     
     // get all winning number of each DrawDate
-    func checkResultAPI(_ payload: Parameters) {
+    func drawDateResultAPI(_ payload: Parameters) {
         AF.request(
             "https://www.glo.or.th/api/checking/getLotteryResult",
             method: .post,

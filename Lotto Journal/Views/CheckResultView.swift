@@ -112,7 +112,7 @@ struct CheckResultView: View {
             }
         }
         .onChange(of: date) {
-            viewModel.checkResultAPI(date.params)
+            viewModel.drawDateResultAPI(date.params)
         }
     }
 }

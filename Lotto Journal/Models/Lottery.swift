@@ -64,6 +64,5 @@ enum Status: Int, Codable, Identifiable, CaseIterable {
         case .doesNotWon:
             "Didn't Win 😢"
         }
-        
     }
 }
