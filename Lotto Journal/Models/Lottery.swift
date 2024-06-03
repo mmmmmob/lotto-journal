@@ -23,7 +23,7 @@ class Lottery {
         self.drawDate = drawDate
     }
     
-    var investment: Int {
+    var investmentPerLottery: Int {
         return amount * 80
     }
     
@@ -64,6 +64,5 @@ enum Status: Int, Codable, Identifiable, CaseIterable {
         case .doesNotWon:
             "Didn't Win 😢"
         }
-        
     }
 }

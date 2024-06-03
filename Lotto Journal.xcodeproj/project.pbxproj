@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A068E8D2BFD276000D06D75 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A068E8C2BFD276000D06D75 /* ResultView.swift */; };
 		4A19774B2BFE02870032CC6B /* Prize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A19774A2BFE02870032CC6B /* Prize.swift */; };
+		4A21A0F52C09947F007BCB43 /* MyLotteryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A21A0F42C09947F007BCB43 /* MyLotteryViewModel.swift */; };
 		4A2BE6C62C04FA8900387819 /* DrawDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2BE6C52C04FA8900387819 /* DrawDate.swift */; };
 		4A2BE6C82C04FC5F00387819 /* Summary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2BE6C72C04FC5F00387819 /* Summary.swift */; };
 		4A7255642C032746003D6D89 /* AddMyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7255632C032746003D6D89 /* AddMyLotteryView.swift */; };
@@ -26,7 +27,6 @@
 		4ABEF1962BFC6F5500904D3E /* PrizeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF1952BFC6F5500904D3E /* PrizeHeaderView.swift */; };
 		4ABEF1982BFC715E00904D3E /* PrizeNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF1972BFC715E00904D3E /* PrizeNumberView.swift */; };
 		4ABEF19B2BFC809700904D3E /* PrizeNumberMultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF19A2BFC809700904D3E /* PrizeNumberMultipleView.swift */; };
-		4AD9DD4E2C04AA1600EE7866 /* MyLotteryHeaderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9DD4D2C04AA1600EE7866 /* MyLotteryHeaderListView.swift */; };
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
 		4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */; };
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
@@ -54,6 +54,7 @@
 		4A068E8C2BFD276000D06D75 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		4A19774A2BFE02870032CC6B /* Prize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prize.swift; sourceTree = "<group>"; };
 		4A19774C2BFE53DC0032CC6B /* Lotto-Journal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Lotto-Journal-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4A21A0F42C09947F007BCB43 /* MyLotteryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryViewModel.swift; sourceTree = "<group>"; };
 		4A2BE6C52C04FA8900387819 /* DrawDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawDate.swift; sourceTree = "<group>"; };
 		4A2BE6C72C04FC5F00387819 /* Summary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Summary.swift; sourceTree = "<group>"; };
 		4A7255632C032746003D6D89 /* AddMyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMyLotteryView.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		4ABEF1952BFC6F5500904D3E /* PrizeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeHeaderView.swift; sourceTree = "<group>"; };
 		4ABEF1972BFC715E00904D3E /* PrizeNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNumberView.swift; sourceTree = "<group>"; };
 		4ABEF19A2BFC809700904D3E /* PrizeNumberMultipleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNumberMultipleView.swift; sourceTree = "<group>"; };
-		4AD9DD4D2C04AA1600EE7866 /* MyLotteryHeaderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryHeaderListView.swift; sourceTree = "<group>"; };
 		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
 		4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryView.swift; sourceTree = "<group>"; };
@@ -119,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4ABEF1912BFC42D300904D3E /* CheckResultViewModel.swift */,
+				4A21A0F42C09947F007BCB43 /* MyLotteryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -136,7 +137,6 @@
 		4AD9DD4C2C04A59E00EE7866 /* MyLottery */ = {
 			isa = PBXGroup;
 			children = (
-				4AD9DD4D2C04AA1600EE7866 /* MyLotteryHeaderListView.swift */,
 			);
 			name = MyLottery;
 			sourceTree = "<group>";
@@ -312,12 +312,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A21A0F52C09947F007BCB43 /* MyLotteryViewModel.swift in Sources */,
 				4ABEF1962BFC6F5500904D3E /* PrizeHeaderView.swift in Sources */,
 				4A74D1392C02170C00A5C211 /* Lottery.swift in Sources */,
 				4ABEF1982BFC715E00904D3E /* PrizeNumberView.swift in Sources */,
 				4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */,
 				4AFEAC382BFF795100BA40AD /* QuickActionType.swift in Sources */,
-				4AD9DD4E2C04AA1600EE7866 /* MyLotteryHeaderListView.swift in Sources */,
 				4A8C440D2BFAFA75000461B9 /* DateExtension.swift in Sources */,
 				4A068E8D2BFD276000D06D75 /* ResultView.swift in Sources */,
 				4A19774B2BFE02870032CC6B /* Prize.swift in Sources */,
@@ -492,7 +492,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -529,7 +529,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

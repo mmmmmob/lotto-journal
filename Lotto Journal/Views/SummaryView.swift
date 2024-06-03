@@ -10,14 +10,12 @@ import SwiftUI
 struct SummaryView: View {
     var body: some View {
         NavigationStack {
-            VStack {
-                Image(systemName: "rectangle.grid.2x2.fill")
-                    .font(.largeTitle)
-                    .foregroundColor(.teal)
-                    .padding(.bottom)
-                Text("Summary")
-            }
-            .navigationTitle("Summary")
+            ContentUnavailableView(
+                "Summary Unavailable",
+                systemImage: "chart.bar.xaxis",
+                description: Text("Keep using to track your progress")
+            )
+                .navigationTitle("Summary")
         }
     }
 }

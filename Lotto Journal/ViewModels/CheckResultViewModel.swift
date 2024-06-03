@@ -11,8 +11,10 @@ import SwiftyJSON
 
 class CheckResultViewModel: ObservableObject {
     
+    // init Result model for storing result
     @Published var result = Result()
     
+    // extract JSON value in a form of { "reward": "Prize.rawValue" } into string array
     var userPrizeResult: [String] {
         var prizeResult = [String]()
         let pathPrize: [JSONSubscriptType] = ["reward"]
@@ -22,8 +24,10 @@ class CheckResultViewModel: ObservableObject {
         return prizeResult
     }
     
+    // stored properties for using as a first date in DatePicker
     let firstDayOfResult: Date = Calendar.current.date(from: DateComponents(year: 2010, month: 3, day: 1))!
     
+    // search result by number
     func numberSearchAPI(searchNum: String, date: String) {
         AF.request(
             "https://www.glo.or.th/api/checking/getcheckLotteryResult",
@@ -62,7 +66,8 @@ class CheckResultViewModel: ObservableObject {
         }
     }
     
-    func checkResultAPI(_ payload: Parameters) {
+    // get all winning number of each DrawDate
+    func drawDateResultAPI(_ payload: Parameters) {
         AF.request(
             "https://www.glo.or.th/api/checking/getLotteryResult",
             method: .post,
@@ -162,6 +167,7 @@ class CheckResultViewModel: ObservableObject {
         }
     }
     
+    // get all winning number of latest DrawDate
     func latestResultAPI() {
         AF.request(
             "https://www.glo.or.th/api/lottery/getLatestLottery",

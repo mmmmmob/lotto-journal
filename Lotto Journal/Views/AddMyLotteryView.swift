@@ -78,7 +78,7 @@ struct AddMyLotteryView: View {
         })
         .onChange(of: apiCall.result.latestResultDate) {
             if let latestResultDate = apiCall.result.latestResultDate.toDate() {
-                drawDate = latestResultDate.addingTimeInterval(1_382_400)
+                drawDate = latestResultDate.upcomingDrawDate
             }
         }
     }
