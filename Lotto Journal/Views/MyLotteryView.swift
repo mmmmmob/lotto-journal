@@ -79,7 +79,9 @@ struct MyLotteryView: View {
                                         }
                                         Spacer()
                                         HStack(alignment: .center) {
-                                            Text(String("฿\(date.totalInvestment)"))
+                                            Text("฿\(date.totalInvestment.delimiter)")
+                                            Text(":")
+                                            Text("฿\(date.totalWon.delimiter)")
                                         }
                                         .font(.system(.callout, design: .default, weight: .semibold))
                                     }
@@ -110,54 +112,19 @@ struct MyLotteryView: View {
                 AddMyLotteryView()
                     .presentationDetents([.medium])
             }
+            .refreshable {
+                processDatesAndLotteries()
+            }
         }
         .onAppear(perform: {
             firstAPICall.latestResultAPI()
-            dates.forEach { date in
-                updateResultAPI(param: date.params) { result in
-                    date.result = result
-                    lotteries.forEach { lottery in
-                        for prize in date.lotteryPrizeResult {
-                            if let prizeAmount = prize[lottery.number] {
-                                if prizeAmount == "-" && date.date == firstAPICall.result.latestResultDate.toDate()?.upcomingDrawDate {
-                                    lottery.status = .isWaiting
-                                } else if prizeAmount == Prize.first.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.first.intPrize
-                                } else if prizeAmount == Prize.firstNB.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.firstNB.intPrize
-                                } else if prizeAmount == Prize.second.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.second.intPrize
-                                } else if prizeAmount == Prize.third.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.third.intPrize
-                                } else if prizeAmount == Prize.fourth.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.fourth.intPrize
-                                } else if prizeAmount == Prize.fifth.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.fifth.intPrize
-                                } else if prizeAmount == Prize.threePre.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.threePre.intPrize
-                                } else if prizeAmount == Prize.threeSuf.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.threeSuf.intPrize
-                                } else if prizeAmount == Prize.twoSuf.stringPrize {
-                                    lottery.status = .doesWon
-                                    lottery.amountWon = Prize.twoSuf.intPrize
-                                } else {
-                                    lottery.status = .doesNotWon
-                                    continue
-                                }
-                            }
-                        }
-                    }
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                processDatesAndLotteries()
             }
         })
+        .onChange(of: lotteries) {
+            processDatesAndLotteries()
+        }
     }
     
     func updateResultAPI(param: Parameters, completion: @escaping ([JSON]) -> Void) {
@@ -184,6 +151,57 @@ struct MyLotteryView: View {
             case .failure(let error):
                 print("Request failed with error: \(error)")
                 completion([])
+            }
+        }
+    }
+    
+    func updateLotteryStatus(for lottery: Lottery, with prizeAmount: String, on date: Date, latestResultDate: Date?) {
+        if prizeAmount == "-" && date == latestResultDate?.upcomingDrawDate {
+            lottery.status = .isWaiting
+        } else if prizeAmount == Prize.first.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.first.intPrize
+        } else if prizeAmount == Prize.firstNB.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.firstNB.intPrize
+        } else if prizeAmount == Prize.second.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.second.intPrize
+        } else if prizeAmount == Prize.third.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.third.intPrize
+        } else if prizeAmount == Prize.fourth.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.fourth.intPrize
+        } else if prizeAmount == Prize.fifth.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.fifth.intPrize
+        } else if prizeAmount == Prize.threePre.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.threePre.intPrize
+        } else if prizeAmount == Prize.threeSuf.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.threeSuf.intPrize
+        } else if prizeAmount == Prize.twoSuf.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.twoSuf.intPrize
+        } else {
+            lottery.status = .doesNotWon
+        }
+    }
+    
+    func processDatesAndLotteries() {
+        dates.forEach { date in
+            updateResultAPI(param: date.params) { result in
+                date.result = result
+                let latestResultDate = firstAPICall.result.latestResultDate.toDate()
+                lotteries.forEach { lottery in
+                    for prize in date.lotteryPrizeResult {
+                        if let prizeAmount = prize[lottery.number] {
+                            updateLotteryStatus(for: lottery, with: prizeAmount, on: date.date, latestResultDate: latestResultDate)
+                        }
+                    }
+                }
             }
         }
     }
