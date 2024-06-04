@@ -26,7 +26,7 @@ struct PrizeNumberMultipleView: View {
         .tracking(10)
         .foregroundStyle(.white)
         .multilineTextAlignment(.center)
-        .background(Color.teal)
+        .background(Color.accentColor)
         .clipShape(.rect(cornerRadius: 10))
         .offset(x: 0, y: -10)
     }

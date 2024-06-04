@@ -134,11 +134,11 @@
 			name = CheckResult;
 			sourceTree = "<group>";
 		};
-		4AD9DD4C2C04A59E00EE7866 /* MyLottery */ = {
+		4AD9DD4C2C04A59E00EE7866 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = MyLottery;
+			name = Summary;
 			sourceTree = "<group>";
 		};
 		4AF097502BF9DA21003A813B = {
@@ -206,7 +206,7 @@
 		4AF0976F2BF9DB75003A813B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4AD9DD4C2C04A59E00EE7866 /* MyLottery */,
+				4AD9DD4C2C04A59E00EE7866 /* Summary */,
 				4ABEF1992BFC716500904D3E /* CheckResult */,
 			);
 			name = Components;

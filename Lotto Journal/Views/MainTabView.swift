@@ -35,7 +35,7 @@ struct MainTabView: View {
                 }
                 .tag(3)
         })
-        .tint(.teal)
+        .tint(.brown)
         .onChange(of: scenePhase) {
             switch scenePhase {
             case .active:
