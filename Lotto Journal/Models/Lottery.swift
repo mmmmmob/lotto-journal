@@ -29,7 +29,7 @@ class Lottery {
         return amount * 80
     }
     
-    var prizePerLottery: Int {
+    var prizePerNumber: Int {
         return amountWon * amount
     }
     

@@ -97,10 +97,6 @@ struct MyLotteryView: View {
                                         .foregroundStyle(Color.white)
                                         .background(Color.accentColor)
                                         .clipShape(Capsule(style: .continuous))
-                                        .overlay(
-                                            Capsule(style: .continuous)
-                                                .stroke(totalWon > totalInvestment ? .green : .red, lineWidth: 2)
-                                            )
                                     }
                                 }
                                 .headerProminence(.increased)

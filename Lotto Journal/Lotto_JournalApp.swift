@@ -25,7 +25,7 @@ struct Lotto_JournalApp: App {
     }
     
     init() {
-        let schema = Schema([Summary.self])
+        let schema = Schema([DrawDate.self])
         let config = ModelConfiguration("LotteryDB", schema: schema)
         do {
             container = try ModelContainer(for: schema, configurations: config)
