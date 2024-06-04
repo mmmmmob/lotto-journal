@@ -8,10 +8,12 @@
 import Foundation
 import SwiftData
 import Alamofire
+import SwiftyJSON
 
 @Model
 class DrawDate {
     var date: Date
+    var result: [JSON] = []
     var lotteries = [Lottery]()
     
     init(date: Date) {
@@ -29,6 +31,19 @@ class DrawDate {
             "number" : lotteryNum,
             "period_date": self.date.periodDate
         ]
+    }
+    
+    // extract JSON value into Dictionary
+    var lotteryPrizeResult: [Dictionary<String, String>] {
+        var prizeResult = [Dictionary<String, String>]()
+        let pathPrize: [JSONSubscriptType] = ["status_data", 0, "reward"]
+        let pathNumber: [JSONSubscriptType] = ["number"]
+        for prize in self.result {
+            var prizePair = Dictionary<String,String>()
+            prizePair[prize[pathNumber].string!] = prize[pathPrize].string ?? "-"
+            prizeResult.append(prizePair)
+        }
+        return prizeResult
     }
     
     var totalInvestment: Int {

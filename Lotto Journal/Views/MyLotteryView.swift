@@ -114,12 +114,53 @@ struct MyLotteryView: View {
         .onAppear(perform: {
             firstAPICall.latestResultAPI()
             dates.forEach { date in
-                updateResultAPI(param: date.params)
+                updateResultAPI(param: date.params) { result in
+                    date.result = result
+                    lotteries.forEach { lottery in
+                        for prize in date.lotteryPrizeResult {
+                            if let prizeAmount = prize[lottery.number] {
+                                if prizeAmount == "-" && date.date == firstAPICall.result.latestResultDate.toDate()?.upcomingDrawDate {
+                                    lottery.status = .isWaiting
+                                } else if prizeAmount == Prize.first.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.first.intPrize
+                                } else if prizeAmount == Prize.firstNB.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.firstNB.intPrize
+                                } else if prizeAmount == Prize.second.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.second.intPrize
+                                } else if prizeAmount == Prize.third.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.third.intPrize
+                                } else if prizeAmount == Prize.fourth.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.fourth.intPrize
+                                } else if prizeAmount == Prize.fifth.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.fifth.intPrize
+                                } else if prizeAmount == Prize.threePre.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.threePre.intPrize
+                                } else if prizeAmount == Prize.threeSuf.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.threeSuf.intPrize
+                                } else if prizeAmount == Prize.twoSuf.stringPrize {
+                                    lottery.status = .doesWon
+                                    lottery.amountWon = Prize.twoSuf.intPrize
+                                } else {
+                                    lottery.status = .doesNotWon
+                                    continue
+                                }
+                            }
+                        }
+                    }
+                }
             }
         })
     }
     
-    func updateResultAPI(param: Parameters) {
+    func updateResultAPI(param: Parameters, completion: @escaping ([JSON]) -> Void) {
         AF.request(
             "https://www.glo.or.th/api/checking/getcheckLotteryResult",
             method: .post,
@@ -131,15 +172,18 @@ struct MyLotteryView: View {
             switch response.result {
             case .success(let data):
                 do {
-                    // Get Result Value as an Array Object
+                    // Parse the JSON data
                     let json = try JSON(data: data)
                     let pathResult: [JSONSubscriptType] = ["response", "result"]
-                    print(json[pathResult].array ?? "No Response")
+                    let result = json[pathResult].array ?? []
+                    completion(result)
                 } catch {
                     print("Error parsing JSON: \(error)")
+                    completion([])
                 }
             case .failure(let error):
                 print("Request failed with error: \(error)")
+                completion([])
             }
         }
     }
