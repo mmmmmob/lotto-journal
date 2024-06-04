@@ -35,7 +35,7 @@ struct MyLotteryView: View {
                             if date.lotteries.count > 0 {
                                 Section {
                                     ForEach(date.lotteries) { lottery in
-                                        HStack(alignment: .lastTextBaseline) {
+                                        HStack(alignment: .center) {
                                             HStack {
                                                 Text(lottery.number)
                                                     .font(.system(.headline, design: .monospaced, weight: .semibold))
@@ -56,6 +56,10 @@ struct MyLotteryView: View {
                                                     .font(.system(.subheadline, weight: .light))
                                             }
                                         }
+                                        .listRowInsets(.init(top: 10,
+                                                             leading: 25,
+                                                             bottom: 10,
+                                                             trailing: 25))
                                     }
                                     .onDelete(perform: { indexSet in
                                         indexSet.forEach { index in
@@ -64,7 +68,7 @@ struct MyLotteryView: View {
                                         }
                                     })
                                 } header: {
-                                    HStack(alignment: .firstTextBaseline) {
+                                    HStack(alignment: .lastTextBaseline) {
                                         if let latestResultDate = firstAPICall.result.latestResultDate.toDate() {
                                             let upcomingDate = latestResultDate.upcomingDrawDate
                                             if date.date == upcomingDate {
@@ -78,12 +82,15 @@ struct MyLotteryView: View {
                                             Text(date.date.fullStringDate) // display fullStringDate while determine date from API
                                         }
                                         Spacer()
-                                        HStack(alignment: .center) {
-                                            Text("฿\(date.totalInvestment.delimiter)")
-                                            Text(":")
+                                        HStack {
                                             Text("฿\(date.totalWon.delimiter)")
+                                            Text("\(Image(systemName: "checkmark.seal"))")
+                                            Text("|")
+                                                .font(.system(.caption, design: .default, weight: .ultraLight))
+                                            Text("฿\(date.totalInvestment.delimiter)")
+                                            Text("\(Image(systemName: "basket"))")
                                         }
-                                        .font(.system(.callout, design: .default, weight: .semibold))
+                                        .font(.system(.caption, design: .default, weight: .regular))
                                     }
                                 }
                                 .headerProminence(.increased)
@@ -92,7 +99,7 @@ struct MyLotteryView: View {
                     }
                 }
             }
-            .listStyle(.grouped)
+            .listStyle(.plain)
             .navigationTitle("My Lotter\(lotteries.count > 1 ? "ies" : "y")")
             .toolbar {
                 if !lotteries.isEmpty {
