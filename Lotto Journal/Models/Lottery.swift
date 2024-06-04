@@ -14,17 +14,23 @@ class Lottery {
     var number: String
     var amount: Int
     var status: Status
+    var amountWon: Int
     @Relationship(deleteRule: .nullify, inverse: \DrawDate.lotteries) var drawDate: DrawDate?
     
-    init(number: String, amount: Int, status: Status = .isWaiting, drawDate: DrawDate? = nil) {
+    init(number: String, amount: Int, status: Status = .isWaiting, drawDate: DrawDate? = nil, amountWon: Int = 0) {
         self.number = number
         self.amount = amount
         self.status = status
         self.drawDate = drawDate
+        self.amountWon = amountWon
     }
     
     var investmentPerLottery: Int {
         return amount * 80
+    }
+    
+    var prizePerLottery: Int {
+        return amountWon * amount
     }
     
     var tagSymbol: Image {

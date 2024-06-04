@@ -14,7 +14,7 @@ class CheckResultViewModel: ObservableObject {
     // init Result model for storing result
     @Published var result = Result()
     
-    // extract JSON value in a form of { "reward": "Prize.rawValue" } into string array
+    // extract JSON value in a form of { "reward": "Prize.___.stringPrize" } into string array
     var userPrizeResult: [String] {
         var prizeResult = [String]()
         let pathPrize: [JSONSubscriptType] = ["reward"]

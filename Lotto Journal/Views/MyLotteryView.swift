@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import Alamofire
+import SwiftyJSON
 
 struct MyLotteryView: View {
     
@@ -33,7 +35,7 @@ struct MyLotteryView: View {
                             if date.lotteries.count > 0 {
                                 Section {
                                     ForEach(date.lotteries) { lottery in
-                                        HStack(alignment: .center) {
+                                        HStack(alignment: .lastTextBaseline) {
                                             HStack {
                                                 Text(lottery.number)
                                                     .font(.system(.headline, design: .monospaced, weight: .semibold))
@@ -77,12 +79,11 @@ struct MyLotteryView: View {
                                         }
                                         Spacer()
                                         HStack(alignment: .center) {
-                                            Text("Total investment: ")
-                                            ForEach(date.lotteries) { result in
-                                                Text("\(result.investmentPerLottery)")
-                                            }
+                                            Text("฿\(date.totalInvestment.delimiter)")
+                                            Text(":")
+                                            Text("฿\(date.totalWon.delimiter)")
                                         }
-                                        .font(.system(.caption, design: .default, weight: .light))
+                                        .font(.system(.callout, design: .default, weight: .semibold))
                                     }
                                 }
                                 .headerProminence(.increased)
@@ -111,10 +112,98 @@ struct MyLotteryView: View {
                 AddMyLotteryView()
                     .presentationDetents([.medium])
             }
+            .refreshable {
+                processDatesAndLotteries()
+            }
         }
         .onAppear(perform: {
             firstAPICall.latestResultAPI()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                processDatesAndLotteries()
+            }
         })
+        .onChange(of: lotteries) {
+            processDatesAndLotteries()
+        }
+    }
+    
+    func updateResultAPI(param: Parameters, completion: @escaping ([JSON]) -> Void) {
+        AF.request(
+            "https://www.glo.or.th/api/checking/getcheckLotteryResult",
+            method: .post,
+            parameters: param,
+            encoding: JSONEncoding.prettyPrinted,
+            headers: nil)
+        .validate(statusCode: 200 ..< 299)
+        .responseData { response in
+            switch response.result {
+            case .success(let data):
+                do {
+                    // Parse the JSON data
+                    let json = try JSON(data: data)
+                    let pathResult: [JSONSubscriptType] = ["response", "result"]
+                    let result = json[pathResult].array ?? []
+                    completion(result)
+                } catch {
+                    print("Error parsing JSON: \(error)")
+                    completion([])
+                }
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                completion([])
+            }
+        }
+    }
+    
+    func updateLotteryStatus(for lottery: Lottery, with prizeAmount: String, on date: Date, latestResultDate: Date?) {
+        if prizeAmount == "-" && date == latestResultDate?.upcomingDrawDate {
+            lottery.status = .isWaiting
+        } else if prizeAmount == Prize.first.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.first.intPrize
+        } else if prizeAmount == Prize.firstNB.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.firstNB.intPrize
+        } else if prizeAmount == Prize.second.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.second.intPrize
+        } else if prizeAmount == Prize.third.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.third.intPrize
+        } else if prizeAmount == Prize.fourth.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.fourth.intPrize
+        } else if prizeAmount == Prize.fifth.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.fifth.intPrize
+        } else if prizeAmount == Prize.threePre.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.threePre.intPrize
+        } else if prizeAmount == Prize.threeSuf.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.threeSuf.intPrize
+        } else if prizeAmount == Prize.twoSuf.stringPrize {
+            lottery.status = .doesWon
+            lottery.amountWon = Prize.twoSuf.intPrize
+        } else {
+            lottery.status = .doesNotWon
+        }
+    }
+    
+    func processDatesAndLotteries() {
+        dates.forEach { date in
+            updateResultAPI(param: date.params) { result in
+                date.result = result
+                let latestResultDate = firstAPICall.result.latestResultDate.toDate()
+                lotteries.forEach { lottery in
+                    for prize in date.lotteryPrizeResult {
+                        if let prizeAmount = prize[lottery.number] {
+                            updateLotteryStatus(for: lottery, with: prizeAmount, on: date.date, latestResultDate: latestResultDate)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
