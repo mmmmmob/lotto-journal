@@ -91,43 +91,9 @@ struct SummaryView: View {
                             .padding(40)
                         }
                     HStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.accentColor.opacity(0.7))
-                            .frame(maxWidth: .infinity, maxHeight: 150)
-                            .overlay {
-                                VStack(alignment: .trailing) {
-                                    Text("💸 Total Spending")
-                                        .font(.system(.caption, design: .default, weight: .regular))
-                                        .foregroundStyle(.primary)
-                                    Text("฿\(totalSpending.delimiter)")
-                                        .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                        .foregroundStyle(.white)
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.5)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .foregroundStyle(.white)
-                                .padding(.horizontal)
-                            }
+                        SummaryWidgetHalfView(numberToShow: totalSpending, headerText: "💸 Total Spending")
                             .padding(.leading)
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.accentColor.opacity(0.7))
-                            .frame(maxWidth: .infinity, maxHeight: 150)
-                            .overlay {
-                                VStack(alignment: .trailing) {
-                                    Text("🏆 Total Prize Won")
-                                        .font(.system(.caption, design: .default, weight: .regular))
-                                        .foregroundStyle(.primary)
-                                    Text("฿\(totalPrizeWon.delimiter)")
-                                        .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                        .foregroundStyle(.white)
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.5)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                                .foregroundStyle(.white)
-                                .padding(.horizontal)
-                            }
+                        SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: "🏆 Total Prize Won")
                             .padding(.trailing)
                     }
                     Spacer()
