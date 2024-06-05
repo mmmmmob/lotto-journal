@@ -14,7 +14,7 @@ struct SummaryWidgetHalfView: View {
     
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
-            .fill(Color.accentColor.opacity(0.7))
+            .fill(Color.accentColor)
             .frame(maxWidth: .infinity, maxHeight: 150)
             .overlay {
                 VStack(alignment: .trailing) {

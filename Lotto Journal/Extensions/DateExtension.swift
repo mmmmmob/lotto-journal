@@ -35,7 +35,7 @@ extension Date {
         return String(calendar.component(.year, from: self))
     }
     
-    var nameOfMonth: String {
+    var nameOfMonth: LocalizedStringResource {
         let calendar = Calendar.current
         switch calendar.component(.month, from: self) {
         case 1:
@@ -69,7 +69,7 @@ extension Date {
         return "\(self.year)-\(self.monthDouble)-\(self.dateDouble)"
     }
     
-    var fullStringDate: String {
+    var fullStringDate: LocalizedStringResource {
         return "\(self.nameOfMonth) \(self.dateSingle), \(self.year)"
     }
     

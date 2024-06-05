@@ -32,7 +32,5 @@ struct Lotto_JournalApp: App {
         } catch {
             fatalError("Could not configure the container")
         }
-        
-        print(URL.applicationSupportDirectory.path(percentEncoded: false))
     }
 }

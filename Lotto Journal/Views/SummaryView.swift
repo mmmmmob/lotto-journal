@@ -57,7 +57,7 @@ struct SummaryView: View {
                 }
                 else {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.accentColor.opacity(0.7))
+                        .fill(Color.accentColor)
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity, maxHeight: 150)
                         .overlay {
@@ -74,7 +74,7 @@ struct SummaryView: View {
                             .padding(40)
                         }
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.accentColor.opacity(0.7))
+                        .fill(Color.accentColor)
                         .frame(maxWidth: .infinity, maxHeight: 150)
                         .padding(.horizontal)
                         .overlay {
@@ -91,9 +91,9 @@ struct SummaryView: View {
                             .padding(40)
                         }
                     HStack {
-                        SummaryWidgetHalfView(numberToShow: totalSpending, headerText: "💸 Total Spending")
+                        SummaryWidgetHalfView(numberToShow: totalSpending, headerText: String(localized: "💸 Total Spending"))
                             .padding(.leading)
-                        SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: "🏆 Total Prize Won")
+                        SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: String(localized: "🏆 Total Prize Won"))
                             .padding(.trailing)
                     }
                     Spacer()

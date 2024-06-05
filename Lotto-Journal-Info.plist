@@ -5,29 +5,36 @@
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>My Lottery</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>123.rectangle</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>MY_LOTTERY_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>myLottery</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Summary</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>list.bullet.clipboard</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>SUMMARY_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>summary</string>
 		</dict>
 		<dict>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Prize Result</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>1.magnifyingglass</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>PRIZE_RESULT_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>result</string>
 		</dict>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>AccentColor</string>
+		<key>UIImageName</key>
+		<string>LaunchScreenImage</string>
+	</dict>
 </dict>
 </plist>
