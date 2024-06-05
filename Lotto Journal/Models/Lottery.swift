@@ -29,7 +29,7 @@ class Lottery {
         return amount * 80
     }
     
-    var prizePerLottery: Int {
+    var prizePerNumber: Int {
         return amountWon * amount
     }
     
@@ -64,7 +64,7 @@ enum Status: Int, Codable, Identifiable, CaseIterable {
     var description: String {
         switch self {
         case .isWaiting:
-            "Waiting for Result🗿"
+            "Waiting 🗿"
         case .doesWon:
             "You Won! 🎉"
         case .doesNotWon:

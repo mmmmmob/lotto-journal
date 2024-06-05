@@ -25,7 +25,7 @@ struct AddMyLotteryView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                OtpView(activeIndicatorColor: Color.teal, inactiveIndicatorColor: Color.gray, length: 6, doSomething: { numbers in
+                OtpView(activeIndicatorColor: Color.accentColor, inactiveIndicatorColor: Color.gray, length: 6, doSomething: { numbers in
                     number = numbers
                 })
                 .padding(.bottom)
@@ -55,7 +55,7 @@ struct AddMyLotteryView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(number.isEmpty)
-                .tint(.teal)
+                .tint(.accentColor)
                 .controlSize(.large)
                 .buttonBorderShape(.roundedRectangle)
                 .padding(.top)

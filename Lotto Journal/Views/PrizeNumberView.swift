@@ -20,7 +20,7 @@ struct PrizeNumberView: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity, alignment: .center)
             .frame(height: 70)
-            .background(Color.teal)
+            .background(Color.accentColor)
             .clipShape(.rect(cornerRadius: 10))
             .offset(x: 0, y: -10)
     }

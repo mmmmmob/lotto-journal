@@ -57,7 +57,7 @@ class DrawDate {
     var totalWon: Int {
         var total: Int = 0
         for lottery in lotteries {
-            total += lottery.prizePerLottery
+            total += lottery.prizePerNumber
         }
         return total
     }

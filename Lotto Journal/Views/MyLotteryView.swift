@@ -68,7 +68,7 @@ struct MyLotteryView: View {
                                         }
                                     })
                                 } header: {
-                                    HStack(alignment: .lastTextBaseline) {
+                                    HStack(alignment: .bottom) {
                                         if let latestResultDate = firstAPICall.result.latestResultDate.toDate() {
                                             let upcomingDate = latestResultDate.upcomingDrawDate
                                             if date.date == upcomingDate {
@@ -82,15 +82,21 @@ struct MyLotteryView: View {
                                             Text(date.date.fullStringDate) // display fullStringDate while determine date from API
                                         }
                                         Spacer()
-                                        HStack {
-                                            Text("฿\(date.totalWon.delimiter)")
+                                        let totalWon = date.totalWon.delimiter
+                                        let totalInvestment = date.totalInvestment.delimiter
+                                        HStack(alignment:.center) {
                                             Text("\(Image(systemName: "checkmark.seal"))")
+                                            Text("\(totalWon)")
                                             Text("|")
                                                 .font(.system(.caption, design: .default, weight: .ultraLight))
-                                            Text("฿\(date.totalInvestment.delimiter)")
                                             Text("\(Image(systemName: "basket"))")
+                                            Text("\(totalInvestment)")
                                         }
                                         .font(.system(.caption, design: .default, weight: .regular))
+                                        .padding(6)
+                                        .foregroundStyle(Color.white)
+                                        .background(Color.accentColor)
+                                        .clipShape(Capsule(style: .continuous))
                                     }
                                 }
                                 .headerProminence(.increased)
