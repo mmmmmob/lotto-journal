@@ -57,14 +57,14 @@ struct SummaryView: View {
                 }
                 else {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.accentColor.opacity(0.9))
+                        .fill(Color.accentColor.opacity(0.7))
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity, maxHeight: 150)
                         .overlay {
                             VStack(alignment: .trailing) {
                                 Text("📈 Total Profit / Loss")
                                     .font(.system(.caption, design: .default, weight: .regular))
-                                    .foregroundStyle(.secondary)
+                                    .foregroundStyle(.primary)
                                 Text("฿\(totalPL.delimiter)")
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
                                     .foregroundStyle(totalPL > 0 ? .green : .red)
@@ -74,14 +74,14 @@ struct SummaryView: View {
                             .padding(40)
                         }
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.accentColor.opacity(0.9))
+                        .fill(Color.accentColor.opacity(0.7))
                         .frame(maxWidth: .infinity, maxHeight: 150)
                         .padding(.horizontal)
                         .overlay {
                             VStack(alignment: .trailing) {
                                 Text("⛅️ Chance of Winning")
                                     .font(.system(.caption, design: .default, weight: .regular))
-                                    .foregroundStyle(.secondary)
+                                    .foregroundStyle(.primary)
                                 Text("\(chanceOfWinning, specifier: "%.2f")%")
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
                                     .foregroundStyle(chanceOfWinning < 50 ? .red : .green)
@@ -92,13 +92,13 @@ struct SummaryView: View {
                         }
                     HStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.accentColor.opacity(0.9))
+                            .fill(Color.accentColor.opacity(0.7))
                             .frame(maxWidth: .infinity, maxHeight: 150)
                             .overlay {
                                 VStack(alignment: .trailing) {
                                     Text("💸 Total Spending")
                                         .font(.system(.caption, design: .default, weight: .regular))
-                                        .foregroundStyle(.secondary)
+                                        .foregroundStyle(.primary)
                                     Text("฿\(totalSpending.delimiter)")
                                         .font(.system(.largeTitle, design: .rounded, weight: .bold))
                                         .foregroundStyle(.white)
@@ -111,13 +111,13 @@ struct SummaryView: View {
                             }
                             .padding(.leading)
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.accentColor.opacity(0.9))
+                            .fill(Color.accentColor.opacity(0.7))
                             .frame(maxWidth: .infinity, maxHeight: 150)
                             .overlay {
                                 VStack(alignment: .trailing) {
                                     Text("🏆 Total Prize Won")
                                         .font(.system(.caption, design: .default, weight: .regular))
-                                        .foregroundStyle(.secondary)
+                                        .foregroundStyle(.primary)
                                     Text("฿\(totalPrizeWon.delimiter)")
                                         .font(.system(.largeTitle, design: .rounded, weight: .bold))
                                         .foregroundStyle(.white)
