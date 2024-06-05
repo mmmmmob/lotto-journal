@@ -47,7 +47,7 @@ class Lottery {
     var tagColor: Color {
         switch status {
         case .isWaiting:
-            return .gray
+            return .customYellow
         case .doesWon:
             return .green
         case .doesNotWon:
