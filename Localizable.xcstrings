@@ -1,0 +1,575 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%.2f%%" : {
+
+    },
+    "%@" : {
+
+    },
+    "%lld" : {
+
+    },
+    "|" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "|"
+          }
+        }
+      }
+    },
+    "⛅️ Chance of Winning" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⛅️ โอกาสถูกรางวัล"
+          }
+        }
+      }
+    },
+    "❌" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "❌"
+          }
+        }
+      }
+    },
+    "🎉" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉"
+          }
+        }
+      }
+    },
+    "👨🏻‍💻" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "👨🏻‍💻"
+          }
+        }
+      }
+    },
+    "📈 Total Profit / Loss" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📈 กำไร / ขาดทุน"
+          }
+        }
+      }
+    },
+    "🔍" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔍"
+          }
+        }
+      }
+    },
+    "🔢  Amount Bought" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔢 จำนวนที่ซื้อ"
+          }
+        }
+      }
+    },
+    "🗓️  Draw Date" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🗓️ งวดออกรางวัล"
+          }
+        }
+      }
+    },
+    "🗓️ Draw Date" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🗓️ งวดออกรางวัล"
+          }
+        }
+      }
+    },
+    "🗓️ Latest Draw" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🗓️ งวดล่าสุด"
+          }
+        }
+      }
+    },
+    "😑" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😑"
+          }
+        }
+      }
+    },
+    "😢" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "😢"
+          }
+        }
+      }
+    },
+    "🚧" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🚧"
+          }
+        }
+      }
+    },
+    "฿%@" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ บาท"
+          }
+        }
+      }
+    },
+    "฿2,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2,000 บาท"
+          }
+        }
+      }
+    },
+    "฿4,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4,000 บาท"
+          }
+        }
+      }
+    },
+    "฿6,000,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6,000,000 บาท"
+          }
+        }
+      }
+    },
+    "฿20,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "20,000 บาท"
+          }
+        }
+      }
+    },
+    "฿40,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "40,000 บาท"
+          }
+        }
+      }
+    },
+    "฿80,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "80,000 บาท"
+          }
+        }
+      }
+    },
+    "฿100,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100,000 บาท"
+          }
+        }
+      }
+    },
+    "฿200,000" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "200,000 บาท"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เพิ่ม"
+          }
+        }
+      }
+    },
+    "Add Lottery" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เพิ่มลอตเตอรี่"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยกเลิก"
+          }
+        }
+      }
+    },
+    "Check your chosen draw date again" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตรวจสอบวันที่ออกรางวัลอีกครั้งนะ"
+          }
+        }
+      }
+    },
+    "Check Your Lottery" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตรวจเลขสลาก"
+          }
+        }
+      }
+    },
+    "Date incorrect" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คุณเลือกวันที่ไม่ถูกต้อง"
+          }
+        }
+      }
+    },
+    "Enter lottery number above" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กรอกหมายเลขสลากในช่องด้านบน"
+          }
+        }
+      }
+    },
+    "Fifth Prize" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รางวัลที่ห้า"
+          }
+        }
+      }
+    },
+    "First Prize" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รางวัลที่หนึ่ง"
+          }
+        }
+      }
+    },
+    "First Prize Neighbors" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รางวัลข้างเคียงรางวัลที่หนึ่ง"
+          }
+        }
+      }
+    },
+    "Fourth Prize" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รางวัลที่สี่"
+          }
+        }
+      }
+    },
+    "Keep using to track your progress" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เริ่มจดบันทึกสลากเพื่อดูสรุปข้อมูลของคุณ"
+          }
+        }
+      }
+    },
+    "Latest Draw" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "งวดล่าสุด"
+          }
+        }
+      }
+    },
+    "Loading..." : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กำลังโหลด..."
+          }
+        }
+      }
+    },
+    "My Lotter%@" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลอตเตอรี่ของฉัน"
+          }
+        }
+      }
+    },
+    "My Lottery" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลอตเตอรี่ของฉัน"
+          }
+        }
+      }
+    },
+    "No Lottery to Display" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่ได้เพิ่มลอตเตอรี่"
+          }
+        }
+      }
+    },
+    "No result available" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่เจอผลรางวัล"
+          }
+        }
+      }
+    },
+    "Please select another date" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลองเลือกวันที่ออกรางวัลใหม่"
+          }
+        }
+      }
+    },
+    "Prize Result" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ผลรางวัล"
+          }
+        }
+      }
+    },
+    "Second Prize" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รางวัลที่สอง"
+          }
+        }
+      }
+    },
+    "Sorry, you didn't win..." : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ว้า... คุณไม่ถูกรางวัล"
+          }
+        }
+      }
+    },
+    "Summary" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สรุปข้อมูล"
+          }
+        }
+      }
+    },
+    "Summary Unavailable" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยังไม่มีรายงานสรุปข้อมูล"
+          }
+        }
+      }
+    },
+    "Tap %@ above to log your first one" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "แตะปุ่ม %@ ด้านบนเพื่อจดบันทึกลอตเตอรี่ใบแรก"
+          }
+        }
+      }
+    },
+    "The results are in..." : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รอแป๊บนะ..."
+          }
+        }
+      }
+    },
+    "Third Prize" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รางวัลที่สาม"
+          }
+        }
+      }
+    },
+    "Three Digits Prefix" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลขหน้าสามตัว"
+          }
+        }
+      }
+    },
+    "Three Digits Suffix" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลขท้ายสามตัว"
+          }
+        }
+      }
+    },
+    "Two Digits Suffix" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลขท้ายสองตัว"
+          }
+        }
+      }
+    },
+    "Upcoming Draw" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "งวดต่อไป"
+          }
+        }
+      }
+    },
+    "x %lld" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "x %lld ใบ"
+          }
+        }
+      }
+    },
+    "Yay! You won!" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เย้! คุณถูกรางวัล!"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

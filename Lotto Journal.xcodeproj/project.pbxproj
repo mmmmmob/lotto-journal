@@ -27,6 +27,7 @@
 		4ABEF1962BFC6F5500904D3E /* PrizeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF1952BFC6F5500904D3E /* PrizeHeaderView.swift */; };
 		4ABEF1982BFC715E00904D3E /* PrizeNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF1972BFC715E00904D3E /* PrizeNumberView.swift */; };
 		4ABEF19B2BFC809700904D3E /* PrizeNumberMultipleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABEF19A2BFC809700904D3E /* PrizeNumberMultipleView.swift */; };
+		4AC996302C106C2100B03EEB /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4AC9962F2C106C2100B03EEB /* Localizable.xcstrings */; };
 		4AF0975D2BF9DA21003A813B /* Lotto_JournalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */; };
 		4AF0975F2BF9DA21003A813B /* MyLotteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */; };
 		4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AF097622BF9DA24003A813B /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		4ABEF1952BFC6F5500904D3E /* PrizeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeHeaderView.swift; sourceTree = "<group>"; };
 		4ABEF1972BFC715E00904D3E /* PrizeNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNumberView.swift; sourceTree = "<group>"; };
 		4ABEF19A2BFC809700904D3E /* PrizeNumberMultipleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrizeNumberMultipleView.swift; sourceTree = "<group>"; };
+		4AC9962F2C106C2100B03EEB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
 		4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		4AF097502BF9DA21003A813B = {
 			isa = PBXGroup;
 			children = (
+				4AC9962F2C106C2100B03EEB /* Localizable.xcstrings */,
 				4AF0975B2BF9DA21003A813B /* Lotto Journal */,
 				4AF0975A2BF9DA21003A813B /* Products */,
 			);
@@ -279,6 +282,7 @@
 			knownRegions = (
 				en,
 				Base,
+				th,
 			);
 			mainGroup = 4AF097502BF9DA21003A813B;
 			packageReferences = (
@@ -302,6 +306,7 @@
 			files = (
 				4AF097662BF9DA24003A813B /* Preview Assets.xcassets in Resources */,
 				4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */,
+				4AC996302C106C2100B03EEB /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
