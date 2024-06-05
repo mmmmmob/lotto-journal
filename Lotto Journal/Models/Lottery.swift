@@ -56,12 +56,12 @@ class Lottery {
     }
 }
 
-enum Status: Int, Codable, Identifiable, CaseIterable {
+enum Status: Codable, Identifiable, CaseIterable {
     case isWaiting, doesWon, doesNotWon
     var id: Self {
         self
     }
-    var description: String {
+    var description: LocalizedStringResource {
         switch self {
         case .isWaiting:
             "Waiting 🗿"

@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>My Lottery</string>
+			<string>MY_LOTTERY_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>123.rectangle</string>
 			<key>UIApplicationShortcutItemType</key>
@@ -14,7 +14,7 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Summary</string>
+			<string>SUMMARY_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>list.bullet.clipboard</string>
 			<key>UIApplicationShortcutItemType</key>
@@ -22,7 +22,7 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>Prize Result</string>
+			<string>PRIZE_RESULT_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
 			<string>1.magnifyingglass</string>
 			<key>UIApplicationShortcutItemType</key>

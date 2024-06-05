@@ -7,6 +7,22 @@
     "%@" : {
 
     },
+    "%@ %@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@, %3$@"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$@ %1$@ %3$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -25,7 +41,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "⛅️ โอกาสถูกรางวัล"
+            "value" : "⛅️ เปอร์เซ็นต์ถูกรางวัล"
           }
         }
       }
@@ -50,12 +66,34 @@
         }
       }
     },
+    "🏆 Total Prize Won" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🏆 ยอดรางวัลรวม"
+          }
+        }
+      }
+    },
     "👨🏻‍💻" : {
       "localizations" : {
         "th" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "👨🏻‍💻"
+          }
+        }
+      }
+    },
+    "💸 Total Spending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💸 ยอดซื้อรวม"
           }
         }
       }
@@ -90,22 +128,12 @@
         }
       }
     },
-    "🗓️  Draw Date" : {
-      "localizations" : {
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🗓️ งวดออกรางวัล"
-          }
-        }
-      }
-    },
     "🗓️ Draw Date" : {
       "localizations" : {
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "🗓️ งวดออกรางวัล"
+            "value" : "🗓️ งวดประจำวันที่"
           }
         }
       }
@@ -260,6 +288,26 @@
         }
       }
     },
+    "April" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เมษายน"
+          }
+        }
+      }
+    },
+    "August" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "สิงหาคม"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "localizations" : {
         "th" : {
@@ -300,12 +348,42 @@
         }
       }
     },
+    "December" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ธันวาคม"
+          }
+        }
+      }
+    },
+    "Didn't Win 😢" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่ถูกรางวัล 😢"
+          }
+        }
+      }
+    },
     "Enter lottery number above" : {
       "localizations" : {
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "กรอกหมายเลขสลากในช่องด้านบน"
+            "value" : "กรอกหมายเลขสลากของคุณ"
+          }
+        }
+      }
+    },
+    "February" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กุมภาพันธ์"
           }
         }
       }
@@ -335,7 +413,7 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "รางวัลข้างเคียงรางวัลที่หนึ่ง"
+            "value" : "รางวัลข้างเคียงฯ"
           }
         }
       }
@@ -350,12 +428,42 @@
         }
       }
     },
+    "January" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "มกราคม"
+          }
+        }
+      }
+    },
+    "July" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กรกฎาคม"
+          }
+        }
+      }
+    },
+    "June" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "มิถุนายน"
+          }
+        }
+      }
+    },
     "Keep using to track your progress" : {
       "localizations" : {
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "เริ่มจดบันทึกสลากเพื่อดูสรุปข้อมูลของคุณ"
+            "value" : "เริ่มจดบันทึกสลากเพื่อดูรายงานของคุณ"
           }
         }
       }
@@ -376,6 +484,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "กำลังโหลด..."
+          }
+        }
+      }
+    },
+    "March" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "มีนาคม"
+          }
+        }
+      }
+    },
+    "May" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พฤษภาคม"
           }
         }
       }
@@ -420,6 +548,26 @@
         }
       }
     },
+    "November" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "พฤศจิกายน"
+          }
+        }
+      }
+    },
+    "October" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ตุลาคม"
+          }
+        }
+      }
+    },
     "Please select another date" : {
       "localizations" : {
         "th" : {
@@ -446,6 +594,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "รางวัลที่สอง"
+          }
+        }
+      }
+    },
+    "September" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "กันยายน"
           }
         }
       }
@@ -545,7 +703,17 @@
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "งวดต่อไป"
+            "value" : "งวดหน้า"
+          }
+        }
+      }
+    },
+    "Waiting 🗿" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รอผล 🗿"
           }
         }
       }
@@ -566,6 +734,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "เย้! คุณถูกรางวัล!"
+          }
+        }
+      }
+    },
+    "You Won! 🎉" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ถูกรางวัล! 🎉"
           }
         }
       }

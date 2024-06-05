@@ -43,7 +43,7 @@ struct AddMyLotteryView: View {
                         }
                     }
                 }
-                DatePicker("🗓️  Draw Date", selection: $drawDate, displayedComponents: .date)
+                DatePicker("🗓️ Draw Date", selection: $drawDate, displayedComponents: .date)
                     .bold()
                 Button {
                     addNewLottery()

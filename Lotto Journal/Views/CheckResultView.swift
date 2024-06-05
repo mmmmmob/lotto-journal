@@ -39,11 +39,11 @@ struct CheckResultView: View {
                 } else if viewModel.result.fetchLatestStatus == 200 && viewModel.result.firstPrize != "-" {
                     VStack {
                         VStack {
-                            PrizeHeaderView(prize: "First Prize", amount: "6,000,000")
+                            PrizeHeaderView(prize: String(localized: "First Prize"), amount: "6,000,000")
                             PrizeNumberView(number: viewModel.result.firstPrize)
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Three Digits Prefix", amount: "4,000")
+                            PrizeHeaderView(prize: String(localized: "Three Digits Prefix"), amount: "4,000")
                             HStack {
                                 ForEach(viewModel.result.threeDigitsPrefix.indices, id: \.self) { index in
                                     PrizeNumberView(number: viewModel.result.threeDigitsPrefix[index])
@@ -51,7 +51,7 @@ struct CheckResultView: View {
                             }
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Three Digits Suffix", amount: "4,000")
+                            PrizeHeaderView(prize: String(localized: "Three Digits Suffix"), amount: "4,000")
                             HStack {
                                 ForEach(viewModel.result.threeDigitsSuffix.indices, id: \.self) { index in
                                     PrizeNumberView(number: viewModel.result.threeDigitsSuffix[index])
@@ -59,11 +59,11 @@ struct CheckResultView: View {
                             }
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Two Digits Suffix", amount: "2,000")
+                            PrizeHeaderView(prize: String(localized: "Two Digits Suffix"), amount: "2,000")
                             PrizeNumberView(number: viewModel.result.twoDigitsSuffix)
                         }
                         VStack {
-                            PrizeHeaderView(prize: "First Price Neighbors", amount: "100,000")
+                            PrizeHeaderView(prize: String(localized: "First Prize Neighbors"), amount: "100,000")
                             HStack {
                                 ForEach(viewModel.result.firstPrizeNeighbors.indices, id: \.self) { index in
                                     PrizeNumberView(number: viewModel.result.firstPrizeNeighbors[index])
@@ -71,19 +71,19 @@ struct CheckResultView: View {
                             }
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Second Prize", amount: "200,000")
+                            PrizeHeaderView(prize: String(localized: "Second Prize"), amount: "200,000")
                             PrizeNumberMultipleView(number: viewModel.result.secondPrize)
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Third Prize", amount: "80,000")
+                            PrizeHeaderView(prize: String(localized: "Third Prize"), amount: "80,000")
                             PrizeNumberMultipleView(number: viewModel.result.thirdPrize)
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Fourth Prize", amount: "40,000")
+                            PrizeHeaderView(prize: String(localized: "Fourth Prize"), amount: "40,000")
                             PrizeNumberMultipleView(number: viewModel.result.fourthPrize)
                         }
                         VStack {
-                            PrizeHeaderView(prize: "Fifth Prize", amount: "20,000")
+                            PrizeHeaderView(prize: String(localized: "Fifth Prize"), amount: "20,000")
                             PrizeNumberMultipleView(number: viewModel.result.fifthPrize)
                         }
                     }

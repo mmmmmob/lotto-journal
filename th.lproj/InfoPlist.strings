@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  Lotto Journal
+
+  Created by Theppitak M. on 05.06.2024.
+  
+*/
+
+MY_LOTTERY_SHORTCUT_TITLE = "ลอตเตอรี่ของฉัน";
+SUMMARY_SHORTCUT_TITLE = "สรุปข้อมูล";
+PRIZE_RESULT_SHORTCUT_TITLE = "ผลรางวัล";

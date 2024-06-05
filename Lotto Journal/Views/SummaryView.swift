@@ -91,9 +91,9 @@ struct SummaryView: View {
                             .padding(40)
                         }
                     HStack {
-                        SummaryWidgetHalfView(numberToShow: totalSpending, headerText: "💸 Total Spending")
+                        SummaryWidgetHalfView(numberToShow: totalSpending, headerText: String(localized: "💸 Total Spending"))
                             .padding(.leading)
-                        SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: "🏆 Total Prize Won")
+                        SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: String(localized: "🏆 Total Prize Won"))
                             .padding(.trailing)
                     }
                     Spacer()
