@@ -57,37 +57,37 @@ struct SummaryView: View {
                 }
                 else {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.accentColor)
+                        .fill(Color.customBlue)
                         .padding(.horizontal)
-                        .frame(maxWidth: .infinity, maxHeight: 150)
+                        .padding(.top, 10)
+                        .frame(maxWidth: .infinity, maxHeight: 160)
                         .overlay {
                             VStack(alignment: .trailing) {
                                 Text("📈 Total Profit / Loss")
                                     .font(.system(.caption, design: .default, weight: .regular))
-                                    .foregroundStyle(.primary)
+                                    .foregroundStyle(.customWhite)
                                 Text("฿\(totalPL.delimiter)")
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                    .foregroundStyle(totalPL > 0 ? .green : .red)
+                                    .foregroundStyle(totalPL > 0 ? .customGreen : .customRed)
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .foregroundStyle(.white)
                             .padding(40)
+                            .padding(.top)
                         }
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.accentColor)
+                        .fill(Color.customBlue)
                         .frame(maxWidth: .infinity, maxHeight: 150)
                         .padding(.horizontal)
                         .overlay {
                             VStack(alignment: .trailing) {
                                 Text("⛅️ Chance of Winning")
                                     .font(.system(.caption, design: .default, weight: .regular))
-                                    .foregroundStyle(.primary)
+                                    .foregroundStyle(.customWhite)
                                 Text("\(chanceOfWinning, specifier: "%.2f")%")
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                    .foregroundStyle(chanceOfWinning < 50 ? .red : .green)
+                                    .foregroundStyle(chanceOfWinning < 50 ? .customRed : .customGreen)
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .foregroundStyle(.white)
                             .padding(40)
                         }
                     HStack {

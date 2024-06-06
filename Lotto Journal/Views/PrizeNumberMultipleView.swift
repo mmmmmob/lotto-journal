@@ -24,9 +24,9 @@ struct PrizeNumberMultipleView: View {
         .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 10))
         .frame(maxHeight: {number.count > 10 ? 300 : .infinity}())
         .tracking(10)
-        .foregroundStyle(.white)
+        .foregroundStyle(.customWhite)
         .multilineTextAlignment(.center)
-        .background(Color.accentColor)
+        .background(Color.customBlue)
         .clipShape(.rect(cornerRadius: 10))
         .offset(x: 0, y: -10)
     }
