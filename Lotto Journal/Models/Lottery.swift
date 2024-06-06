@@ -49,9 +49,9 @@ class Lottery {
         case .isWaiting:
             return .customYellow
         case .doesWon:
-            return .green
+            return .customGreen
         case .doesNotWon:
-            return .red
+            return .customRed
         }
     }
 }

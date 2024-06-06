@@ -94,8 +94,8 @@ struct MyLotteryView: View {
                                         }
                                         .font(.system(.caption, design: .default, weight: .regular))
                                         .padding(6)
-                                        .foregroundStyle(Color.white)
-                                        .background(Color.accentColor)
+                                        .foregroundStyle(Color.customWhite)
+                                        .background(Color.customBlue)
                                         .clipShape(Capsule(style: .continuous))
                                     }
                                 }
