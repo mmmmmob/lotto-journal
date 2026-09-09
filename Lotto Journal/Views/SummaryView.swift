@@ -83,7 +83,7 @@ struct SummaryView: View {
                                 Text("⛅️ Chance of Winning")
                                     .font(.system(.caption, design: .default, weight: .regular))
                                     .foregroundStyle(.customWhite)
-                                Text("\(chanceOfWinning, specifier: "%.2f")%")
+                                Text(chanceOfWinning / 100, format: .percent.precision(.fractionLength(2)))
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
                                     .foregroundStyle(chanceOfWinning < 50 ? .customRed : .customGreen)
                             }

@@ -14,8 +14,7 @@ struct MainTabView: View {
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
-        TabView(selection: $selectedTab,
-                content:  {
+        TabView(selection: $selectedTab) {
             MyLotteryView()
                 .tabItem {
                     Image(systemName: "123.rectangle")
@@ -34,10 +33,10 @@ struct MainTabView: View {
                     Text("Prize Result")
                 }
                 .tag(3)
-        })
+        }
         .tint(.blue)
-        .onChange(of: scenePhase) {
-            switch scenePhase {
+        .onChange(of: scenePhase) { _, newPhase in
+            switch newPhase {
             case .active:
                 performAction()
             default:
@@ -65,4 +64,6 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environmentObject(QAService.shared)
+        .modelContainer(for: DrawDate.self, inMemory: true)
 }

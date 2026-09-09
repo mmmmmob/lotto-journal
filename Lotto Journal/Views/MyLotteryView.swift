@@ -129,13 +129,13 @@ struct MyLotteryView: View {
                 processDatesAndLotteries()
             }
         }
-        .onAppear(perform: {
+        .onAppear {
             firstAPICall.latestResultAPI()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 processDatesAndLotteries()
             }
-        })
-        .onChange(of: lotteries) {
+        }
+        .onChange(of: lotteries) { _, _ in
             processDatesAndLotteries()
         }
     }

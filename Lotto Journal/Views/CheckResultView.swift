@@ -103,16 +103,16 @@ struct CheckResultView: View {
             .navigationTitle("Prize Result")
             .padding(.horizontal)
         }
-        .onAppear(perform: {
+        .onAppear {
             viewModel.latestResultAPI()
-        })
-        .onChange(of: viewModel.result.latestResultDate) {
-            if let latestResultDate = viewModel.result.latestResultDate.toDate() {
+        }
+        .onChange(of: viewModel.result.latestResultDate) { _, newLatestDate in
+            if let latestResultDate = newLatestDate.toDate() {
                 date = latestResultDate
             }
         }
-        .onChange(of: date) {
-            viewModel.drawDateResultAPI(date.params)
+        .onChange(of: date) { _, newDate in
+            viewModel.drawDateResultAPI(newDate.params)
         }
     }
 }

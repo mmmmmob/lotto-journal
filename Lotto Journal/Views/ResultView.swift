@@ -116,11 +116,11 @@ struct ResultView: View {
             .frame(height: 500)
             .sensoryFeedback(.success, trigger: isSearchDone)
             .sensoryFeedback(.error, trigger: isDateCorrect)
-            .onChange(of: text) {
-                if text.count == 6 && isDateCorrect == true {
-                    viewModel.numberSearchAPI(searchNum: text, date: date.periodDate)
+            .onChange(of: text) { _, newText in
+                if newText.count == 6 && isDateCorrect == true {
+                    viewModel.numberSearchAPI(searchNum: newText, date: date.periodDate)
                     isSearchDone.toggle()
-                } else if text.count < 6 {
+                } else if newText.count < 6 {
                     viewModel.result.userResult.removeAll()
                     viewModel.result.fetchNumberStatus = 500
                     viewModel.drawDateResultAPI(date.params)
@@ -132,7 +132,7 @@ struct ResultView: View {
         }
         else {
             EmptyView()
-                .onChange(of: date) {
+                .onChange(of: date) { _, _ in
                     isDateCorrect = true
                     viewModel.result.checkResultStatus = ""
                 }
@@ -141,8 +141,7 @@ struct ResultView: View {
 }
 
 #Preview {
-    @State var text = "..."
-    @State var date = Date()
-    @State var isSearchDone = false
-    return ResultView(text: $text, date: $date)
+    @Previewable @State var text = "..."
+    @Previewable @State var date = Date()
+    ResultView(text: $text, date: $date)
 }

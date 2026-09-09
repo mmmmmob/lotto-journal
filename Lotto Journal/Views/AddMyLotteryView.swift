@@ -69,15 +69,15 @@ struct AddMyLotteryView: View {
                     Button("Cancel") {
                         isDismiss()
                     }
-                    .foregroundStyle(Color.red)
+                    .foregroundStyle(.red)
                 }
             }
         }
-        .onAppear(perform: {
+        .onAppear {
             apiCall.latestResultAPI()
-        })
-        .onChange(of: apiCall.result.latestResultDate) {
-            if let latestResultDate = apiCall.result.latestResultDate.toDate() {
+        }
+        .onChange(of: apiCall.result.latestResultDate) { _, newLatestDate in
+            if let latestResultDate = newLatestDate.toDate() {
                 drawDate = latestResultDate.upcomingDrawDate
             }
         }
