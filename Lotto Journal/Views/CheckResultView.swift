@@ -87,6 +87,7 @@ struct CheckResultView: View {
                             PrizeNumberMultipleView(number: viewModel.result.fifthPrize)
                         }
                     }
+                    
                 } else {
                     VStack {
                         Text("🚧")
@@ -101,6 +102,7 @@ struct CheckResultView: View {
                 }
             }
             .navigationTitle("Prize Result")
+            .scrollIndicators(.hidden)
             .padding(.horizontal)
         }
         .onAppear {

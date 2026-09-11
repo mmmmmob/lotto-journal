@@ -9,20 +9,49 @@ import SwiftUI
 
 struct PrizeNumberMultipleView: View {
     
-    var number: [String]
+    let number: [String]
+    
+    private var pages: [[String]] {
+        let sortedNumber = number.sorted()
+        guard !sortedNumber.isEmpty else { return [] }
+        let chunkSize = 10
+        return stride(from: 0, to: sortedNumber.count, by: chunkSize).map {
+            Array(sortedNumber[$0..<min($0 + chunkSize, sortedNumber.count)])
+        }
+    }
     
     var body: some View {
-        ScrollView() {
-            LazyVGrid(columns: [GridItem(.flexible()),GridItem(.flexible())], alignment: .center, spacing: 8) {
-                let sortedNumber = number.sorted()
-                ForEach(sortedNumber.indices, id: \.self) { index in
-                    Text(sortedNumber[index])
+        Group {
+            if pages.count > 1 {
+                TabView {
+                    ForEach(pages.indices, id: \.self) { pageIndex in
+                        VStack {
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .center, spacing: 8) {
+                                ForEach(pages[pageIndex].indices, id: \.self) { itemIndex in
+                                    Text(pages[pageIndex][itemIndex])
+                                }
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.top, 20)
+                            Spacer(minLength: 0)
+                        }
+                    }
                 }
+                .tabViewStyle(.page(indexDisplayMode: .always))
+                .tint(.customWhite)
+                .frame(height: 250)
+            } else {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .center, spacing: 8) {
+                    let sortedNumber = number.sorted()
+                    ForEach(sortedNumber.indices, id: \.self) { index in
+                        Text(sortedNumber[index])
+                    }
+                }
+                .padding(.horizontal, 10)
+                .padding(.vertical, 20)
             }
         }
         .font(.system(.title2, design: .monospaced, weight: .bold))
-        .padding(.init(top: 20, leading: 10, bottom: 20, trailing: 10))
-        .frame(maxHeight: {number.count > 10 ? 300 : .infinity}())
         .tracking(10)
         .foregroundStyle(.customWhite)
         .multilineTextAlignment(.center)
