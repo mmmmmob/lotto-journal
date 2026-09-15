@@ -84,19 +84,42 @@ struct MyLotteryView: View {
                                         Spacer()
                                         let totalWon = date.totalWon.delimiter
                                         let totalInvestment = date.totalInvestment.delimiter
-                                        HStack(alignment:.center) {
-                                            Text("\(Image(systemName: "checkmark.seal"))")
-                                            Text("\(totalWon)")
-                                            Text("|")
-                                                .font(.system(.caption, design: .default, weight: .ultraLight))
-                                            Text("\(Image(systemName: "basket"))")
-                                            Text("\(totalInvestment)")
+                                        HStack(alignment: .center, spacing: 5) {
+                                            Image(systemName: "checkmark.seal.fill")
+                                                .foregroundStyle(Color.customWhite)
+                                            Text(totalWon)
+                                            Text("•")
+                                                .foregroundStyle(Color.customWhite.opacity(0.6))
+                                            Image(systemName: "basket.fill")
+                                                .foregroundStyle(Color.customWhite)
+                                            Text(totalInvestment)
                                         }
-                                        .font(.system(.caption, design: .default, weight: .regular))
-                                        .padding(6)
+                                        .font(.system(.caption, design: .default, weight: .medium))
                                         .foregroundStyle(Color.customWhite)
-                                        .background(Color.customBlue)
-                                        .clipShape(Capsule(style: .continuous))
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background {
+                                            Capsule(style: .continuous)
+                                                .fill(
+                                                    LinearGradient(
+                                                        colors: [Color.customBlue.opacity(0.92), Color.customBlue],
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    )
+                                                )
+                                        }
+                                        .overlay {
+                                            Capsule(style: .continuous)
+                                                .strokeBorder(
+                                                    LinearGradient(
+                                                        colors: [Color.white.opacity(0.45), Color.white.opacity(0.12)],
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 1
+                                                )
+                                        }
+                                        .shadow(color: Color.customBlue.opacity(0.25), radius: 4, x: 0, y: 2)
                                     }
                                 }
                                 .headerProminence(.increased)
@@ -123,7 +146,8 @@ struct MyLotteryView: View {
             }
             .sheet(isPresented: $isAdding) {
                 AddMyLotteryView()
-                    .presentationDetents([.medium])
+                    .presentationDetents([.medium, .large])
+                    .presentationDragIndicator(.visible)
             }
             .refreshable {
                 processDatesAndLotteries()

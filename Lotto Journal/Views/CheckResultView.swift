@@ -18,92 +18,132 @@ struct CheckResultView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack {
-                    DatePicker("🗓️ Draw Date", selection: $date, in: viewModel.firstDayOfResult...(viewModel.result.latestResultDate.toDate() ?? Date())
-                               , displayedComponents: .date)
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                    Spacer()
-                    Button("🗓️ Latest Draw") {
-                        viewModel.latestResultAPI()
-                        if let latestResultDate = viewModel.result.latestResultDate.toDate() {
-                            date = latestResultDate
+            ScrollViewReader { proxy in
+                ScrollView {
+                    VStack(spacing: 24) {
+                        Color.clear
+                            .frame(height: 0)
+                            .id("top")
+                        
+                        // Date picker and Latest Draw control
+                        VStack(spacing: 12) {
+                            DatePicker(
+                                "Draw Date",
+                                selection: $date,
+                                in: viewModel.firstDayOfResult...(viewModel.result.latestResultDate.toDate() ?? Date()),
+                                displayedComponents: .date
+                            )
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                            
+                            Button {
+                                viewModel.latestResultAPI()
+                                if let latestResultDate = viewModel.result.latestResultDate.toDate() {
+                                    date = latestResultDate
+                                }
+                            } label: {
+                                Label("Latest Draw", systemImage: "calendar.badge.clock")
+                                    .font(.subheadline.weight(.semibold))
+                            }
+                            .buttonStyle(.bordered)
+                            .buttonBorderShape(.capsule)
+                            //.tint(Color.customBlue)
+                        }
+                        .padding(.top, 4)
+                        
+                        if viewModel.result.fetchLatestStatus == 500 {
+                            ProgressView("Loading...")
+                                .padding(.top, 40)
+                        } else if viewModel.result.fetchLatestStatus == 200 && viewModel.result.firstPrize != "-" {
+                            VStack(spacing: 20) {
+                                // First Prize
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "First Prize"), amount: "6,000,000")
+                                    PrizeNumberView(number: viewModel.result.firstPrize)
+                                }
+                                
+                                // Three Digits Prefix
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Three Digits Prefix"), amount: "4,000")
+                                    HStack(spacing: 12) {
+                                        ForEach(viewModel.result.threeDigitsPrefix.indices, id: \.self) { index in
+                                            PrizeNumberView(number: viewModel.result.threeDigitsPrefix[index])
+                                        }
+                                    }
+                                }
+                                
+                                // Three Digits Suffix
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Three Digits Suffix"), amount: "4,000")
+                                    HStack(spacing: 12) {
+                                        ForEach(viewModel.result.threeDigitsSuffix.indices, id: \.self) { index in
+                                            PrizeNumberView(number: viewModel.result.threeDigitsSuffix[index])
+                                        }
+                                    }
+                                }
+                                
+                                // Two Digits Suffix
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Two Digits Suffix"), amount: "2,000")
+                                    PrizeNumberView(number: viewModel.result.twoDigitsSuffix)
+                                }
+                                
+                                // First Prize Neighbors
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "First Prize Neighbors"), amount: "100,000")
+                                    HStack(spacing: 12) {
+                                        ForEach(viewModel.result.firstPrizeNeighbors.indices, id: \.self) { index in
+                                            PrizeNumberView(number: viewModel.result.firstPrizeNeighbors[index])
+                                        }
+                                    }
+                                }
+                                
+                                // Second Prize
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Second Prize"), amount: "200,000")
+                                    PrizeNumberMultipleView(number: viewModel.result.secondPrize)
+                                }
+                                
+                                // Third Prize
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Third Prize"), amount: "80,000")
+                                    PrizeNumberMultipleView(number: viewModel.result.thirdPrize)
+                                }
+                                
+                                // Fourth Prize
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Fourth Prize"), amount: "40,000")
+                                    PrizeNumberMultipleView(number: viewModel.result.fourthPrize)
+                                }
+                                
+                                // Fifth Prize
+                                VStack(alignment: .leading, spacing: 6) {
+                                    PrizeHeaderView(prize: String(localized: "Fifth Prize"), amount: "20,000")
+                                    PrizeNumberMultipleView(number: viewModel.result.fifthPrize)
+                                }
+                            }
+                        } else {
+                            ContentUnavailableView(
+                                "No Result Available",
+                                systemImage: "calendar.badge.exclamationmark",
+                                description: Text("Please select another date")
+                            )
+                            .padding(.top, 20)
                         }
                     }
+                    .padding(.horizontal)
+                    .padding(.bottom, 60)
                 }
-                Spacer()
-                if viewModel.result.fetchLatestStatus == 500 {
-                    ProgressView("Loading...")
-                        .offset(x: 0, y:80)
-                } else if viewModel.result.fetchLatestStatus == 200 && viewModel.result.firstPrize != "-" {
-                    VStack {
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "First Prize"), amount: "6,000,000")
-                            PrizeNumberView(number: viewModel.result.firstPrize)
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Three Digits Prefix"), amount: "4,000")
-                            HStack {
-                                ForEach(viewModel.result.threeDigitsPrefix.indices, id: \.self) { index in
-                                    PrizeNumberView(number: viewModel.result.threeDigitsPrefix[index])
-                                }
-                            }
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Three Digits Suffix"), amount: "4,000")
-                            HStack {
-                                ForEach(viewModel.result.threeDigitsSuffix.indices, id: \.self) { index in
-                                    PrizeNumberView(number: viewModel.result.threeDigitsSuffix[index])
-                                }
-                            }
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Two Digits Suffix"), amount: "2,000")
-                            PrizeNumberView(number: viewModel.result.twoDigitsSuffix)
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "First Prize Neighbors"), amount: "100,000")
-                            HStack {
-                                ForEach(viewModel.result.firstPrizeNeighbors.indices, id: \.self) { index in
-                                    PrizeNumberView(number: viewModel.result.firstPrizeNeighbors[index])
-                                }
-                            }
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Second Prize"), amount: "200,000")
-                            PrizeNumberMultipleView(number: viewModel.result.secondPrize)
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Third Prize"), amount: "80,000")
-                            PrizeNumberMultipleView(number: viewModel.result.thirdPrize)
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Fourth Prize"), amount: "40,000")
-                            PrizeNumberMultipleView(number: viewModel.result.fourthPrize)
-                        }
-                        VStack {
-                            PrizeHeaderView(prize: String(localized: "Fifth Prize"), amount: "20,000")
-                            PrizeNumberMultipleView(number: viewModel.result.fifthPrize)
-                        }
+                .scrollBounceBehavior(.basedOnSize)
+                .scrollIndicators(.hidden)
+                .onChange(of: date) { _, newDate in
+                    withAnimation {
+                        proxy.scrollTo("top", anchor: .top)
                     }
-                    
-                } else {
-                    VStack {
-                        Text("🚧")
-                            .font(.system(size: 80))
-                        Text("No result available")
-                            .font(.system(.title3, weight: .light))
-                        Text("Please select another date")
-                            .font(.title2).bold()
-                    }
-                    .offset(x: 0, y:60)
-                    Spacer()
+                    viewModel.drawDateResultAPI(newDate.params)
                 }
             }
             .navigationTitle("Prize Result")
-            .scrollIndicators(.hidden)
-            .padding(.horizontal)
         }
         .onAppear {
             viewModel.latestResultAPI()
@@ -112,9 +152,6 @@ struct CheckResultView: View {
             if let latestResultDate = newLatestDate.toDate() {
                 date = latestResultDate
             }
-        }
-        .onChange(of: date) { _, newDate in
-            viewModel.drawDateResultAPI(newDate.params)
         }
     }
 }

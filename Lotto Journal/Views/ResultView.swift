@@ -20,8 +20,9 @@ struct ResultView: View {
         VStack {
             if text.count < 6 {
                 Spacer()
-                Text(isDateCorrect ? "🔍" : "❌")
-                    .font(.system(size: 80))
+                Image(systemName: isDateCorrect ? "1.magnifyingglass" : "xmark.circle")
+                    .font(.system(size: 70))
+                    .foregroundStyle(isDateCorrect ? Color.secondary : Color.red)
                 if isDateCorrect {
                     Text("Enter lottery number for\n\(date.formatted(date: .complete, time: .omitted))")
                         .multilineTextAlignment(.center)
@@ -139,7 +140,7 @@ struct ResultView: View {
                 } else { isDateCorrect = true }
             }
         }
-        .onChange(of: date) { _, _ in
+        .onChange(of: date) {
             isDateCorrect = true
             viewModel.result.checkResultStatus = ""
         }
