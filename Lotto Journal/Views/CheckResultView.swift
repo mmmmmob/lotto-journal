@@ -10,14 +10,14 @@ import SwiftUI
 struct CheckResultView: View {
     
     @StateObject var viewModel = CheckResultViewModel()
-    @State var text: String = ""
-    @State var date: Date = Date()
+    @Binding var date: Date
+    
+    init(date: Binding<Date> = .constant(Date())) {
+        self._date = date
+    }
     
     var body: some View {
         NavigationStack {
-            ResultView(text: $text, date: $date)
-                .searchable(text: $text, prompt: "Check Your Lottery")
-                .keyboardType(.numberPad)
             ScrollView {
                 VStack {
                     DatePicker("🗓️ Draw Date", selection: $date, in: viewModel.firstDayOfResult...(viewModel.result.latestResultDate.toDate() ?? Date())
@@ -120,5 +120,6 @@ struct CheckResultView: View {
 }
 
 #Preview {
-    CheckResultView()
+    @Previewable @State var date = Date()
+    CheckResultView(date: $date)
 }
