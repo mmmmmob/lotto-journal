@@ -52,6 +52,7 @@ struct AddMyLotteryView: View {
                                     .padding(.trailing, 4)
                             }
                         }
+                        .tint(Color.customBlue)
                         
                         Divider()
                         
@@ -61,7 +62,10 @@ struct AddMyLotteryView: View {
                         }
                     }
                     .padding(16)
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .background {
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                    }
                     .overlay {
                         RoundedRectangle(cornerRadius: 18, style: .continuous)
                             .strokeBorder(
