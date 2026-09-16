@@ -19,8 +19,8 @@ flowchart TD
     end
 
     subgraph State ["State and Flow Control"]
-        QAService["QAService (Quick Actions Singleton)"]
-        CheckResultVM["CheckResultViewModel (ObservableObject)"]
+        QAService["QAService (@Observable Singleton)"]
+        CheckResultVM["CheckResultViewModel (@Observable)"]
     end
 
     subgraph Persistence ["Persistence Layer (SwiftData)"]
@@ -52,10 +52,10 @@ flowchart TD
 ```
 
 ### Architectural Principles
-- **Declarative & Reactive UI**: Built 100% in SwiftUI with reactive state propagation via `@State`, `@Query`, and `@ObservableObject`.
+- **Declarative & Reactive UI**: Built 100% in SwiftUI with modern reactive state propagation via `@Observable`, `@State`, `@Query`, and `@Environment`.
 - **Offline-First Persistence**: Powered by SwiftData with on-device SQLite storage, enabling instant app launches and offline browsing of ticket history and past draws.
 - **Single Source of Truth**: SwiftData `@Model` objects act as the source of truth for ticket collections; UI views reactively update when database models change.
-- **Decoupled Quick Actions**: Deep-linking from iOS Home Screen shortcuts is routed through a dedicated `QAService` observable class to minimize coupling with UIKit lifecycle delegates.
+- **Decoupled Quick Actions**: Deep-linking from iOS Home Screen shortcuts is routed through a dedicated `@Observable` `QAService` class to minimize coupling with UIKit lifecycle delegates.
 
 ---
 
@@ -209,7 +209,7 @@ Home Screen Quick Actions are configured via `UIApplicationShortcutItem` in `Inf
 - `summary`: Navigates to Tab 2 (`SummaryView`).
 - `result`: Navigates to Tab 3 (`CheckResultView`).
 
-The `QAService` observable class bridges the UIKit delegate lifecycle (`SceneDelegate` / `AppDelegate`) to the SwiftUI declarative hierarchy via `@EnvironmentObject`.
+The `QAService` `@Observable` class bridges the UIKit delegate lifecycle (`SceneDelegate` / `AppDelegate`) to the SwiftUI declarative hierarchy via `@Environment(QAService.self)`.
 
 ---
 
