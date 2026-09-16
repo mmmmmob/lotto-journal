@@ -82,50 +82,77 @@ extension Date {
     }
     
     var upcomingDrawDate: Date {
-        if self.monthDouble == "01" { // for Teacher's Day
-            switch self.dateDouble {
-            case "17":
-                return self.addingTimeInterval(1_296_000) // +15 days = 1st of Feb.
-            default:
-                return self
+        let calendar = Calendar.current
+        let yearVal = calendar.component(.year, from: self)
+        let monthVal = calendar.component(.month, from: self)
+        let dayVal = calendar.component(.day, from: self)
+        
+        func makeDate(year: Int, month: Int, day: Int) -> Date {
+            calendar.date(from: DateComponents(year: year, month: month, day: day)) ?? self
+        }
+        
+        switch (monthVal, dayVal) {
+        case (1, 2):
+            return makeDate(year: yearVal, month: 1, day: 17)
+        case (1, 17):
+            return makeDate(year: yearVal, month: 2, day: 1)
+        case (4, 1):
+            return makeDate(year: yearVal, month: 4, day: 16)
+        case (4, 16):
+            return makeDate(year: yearVal, month: 5, day: 2)
+        case (5, 2):
+            return makeDate(year: yearVal, month: 5, day: 16)
+        case (12, 1):
+            return makeDate(year: yearVal, month: 12, day: 16)
+        case (12, 16):
+            return makeDate(year: yearVal + 1, month: 1, day: 2)
+        default:
+            if dayVal <= 1 {
+                return makeDate(year: yearVal, month: monthVal, day: 16)
+            } else if dayVal <= 16 {
+                let nextMonth = monthVal == 12 ? 1 : monthVal + 1
+                let nextYear = monthVal == 12 ? yearVal + 1 : yearVal
+                let nextDay = (nextMonth == 1 || nextMonth == 5) ? 2 : 1
+                return makeDate(year: nextYear, month: nextMonth, day: nextDay)
+            } else {
+                let nextMonth = monthVal == 12 ? 1 : monthVal + 1
+                let nextYear = monthVal == 12 ? yearVal + 1 : yearVal
+                let nextDay = (nextMonth == 1 || nextMonth == 5) ? 2 : 1
+                return makeDate(year: nextYear, month: nextMonth, day: nextDay)
             }
-        } else if self.monthDouble == "04" { // for Labor Day
-            switch self.dateDouble {
-            case "01":
-                return self.addingTimeInterval(1_296_000) // +15 days = 16th of Apr.
-            case "16":
-                return self.addingTimeInterval(1_382_400) // +16 days = 2nd of May
-            default:
-                return self
-            }
-        } else if self.monthDouble == "05" { // for Labor's Day
-            switch self.dateDouble {
-            case "02":
-                return self.addingTimeInterval(1_209_600) // + 14 days = 16th of May
-            case "16":
-                return self.addingTimeInterval(1_382_400) // + 16 days = 1st of Jun.
-            default:
-                return self
-            }
-        } else if self.monthDouble == "12" { // for New Year's Day
-            switch self.dateDouble {
-            case "01":
-                return self.addingTimeInterval(1_296_000) // +15 days = 16th of Dec.
-            case "16":
-                return self.addingTimeInterval(1_209_600) // +14 days = 30th of Dec.
-            case "30":
-                return self.addingTimeInterval(1_555_200) // +17 days = 17th of Jan.
-            default:
-                return self
-            }
-        } else {
-            switch self.dateDouble { // for normal Draw Date
-            case "01":
-                return self.addingTimeInterval(1_296_000) // +15 days = 16th of next month
-            case "16":
-                return self.addingTimeInterval(1_382_400) // +16 days = 1st of next month
-            default:
-                return self
+        }
+    }
+    
+    var previousDrawDate: Date {
+        let calendar = Calendar.current
+        let yearVal = calendar.component(.year, from: self)
+        let monthVal = calendar.component(.month, from: self)
+        let dayVal = calendar.component(.day, from: self)
+        
+        func makeDate(year: Int, month: Int, day: Int) -> Date {
+            calendar.date(from: DateComponents(year: year, month: month, day: day)) ?? self
+        }
+        
+        switch (monthVal, dayVal) {
+        case (1, 2):
+            return makeDate(year: yearVal - 1, month: 12, day: 16)
+        case (1, 17):
+            return makeDate(year: yearVal, month: 1, day: 2)
+        case (2, 1):
+            return makeDate(year: yearVal, month: 1, day: 17)
+        case (5, 2):
+            return makeDate(year: yearVal, month: 4, day: 16)
+        case (5, 16):
+            return makeDate(year: yearVal, month: 5, day: 2)
+        default:
+            if dayVal >= 16 {
+                let prevDay = (monthVal == 1 || monthVal == 5) ? 2 : 1
+                return makeDate(year: yearVal, month: monthVal, day: prevDay)
+            } else {
+                let prevMonth = monthVal == 1 ? 12 : monthVal - 1
+                let prevYear = monthVal == 1 ? yearVal - 1 : yearVal
+                let prevDay = 16
+                return makeDate(year: prevYear, month: prevMonth, day: prevDay)
             }
         }
     }
