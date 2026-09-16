@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CheckResultView: View {
     
-    @StateObject var viewModel = CheckResultViewModel()
+    @State private var viewModel = CheckResultViewModel()
     @Binding var date: Date
     
     init(date: Binding<Date> = .constant(Date())) {

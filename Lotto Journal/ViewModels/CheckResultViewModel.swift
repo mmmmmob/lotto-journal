@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import Observation
 import Alamofire
 import SwiftyJSON
 
-class CheckResultViewModel: ObservableObject {
+@Observable
+class CheckResultViewModel {
     
     // init Result model for storing result
-    @Published var result = Result()
+    var result = Result()
     
     // extract JSON value in a form of { "reward": "Prize.___.stringPrize" } into string array
     var userPrizeResult: [String] {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResultView: View {
     
-    @StateObject var viewModel = CheckResultViewModel()
+    @State private var viewModel = CheckResultViewModel()
     @Environment(\.isSearching) private var isSearching: Bool
     @Binding var text: String
     let date: Date
@@ -140,7 +140,7 @@ struct ResultView: View {
                 } else { isDateCorrect = true }
             }
         }
-        .onChange(of: date) {
+        .onChange(of: date) { _, _ in
             isDateCorrect = true
             viewModel.result.checkResultStatus = ""
         }

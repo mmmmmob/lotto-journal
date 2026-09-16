@@ -11,7 +11,7 @@ import OTPView
 
 struct AddMyLotteryView: View {
     
-    @StateObject private var apiCall = CheckResultViewModel()
+    @State private var apiCall = CheckResultViewModel()
     
     @Query private var listedDrawDate: [DrawDate]
     

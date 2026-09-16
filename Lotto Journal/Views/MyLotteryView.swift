@@ -12,7 +12,7 @@ import SwiftyJSON
 
 struct MyLotteryView: View {
     
-    @StateObject private var firstAPICall = CheckResultViewModel()
+    @State private var firstAPICall = CheckResultViewModel()
     
     @Query(sort: \DrawDate.date, order: .reverse) private var dates: [DrawDate]
     @Query private var lotteries: [Lottery]
