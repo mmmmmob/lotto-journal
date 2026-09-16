@@ -12,7 +12,7 @@ struct MainTabView: View {
     @State var date: Date = Date()
     @State var number: String = ""
     
-    @EnvironmentObject var qaService: QAService
+    @Environment(QAService.self) private var qaService
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
@@ -65,6 +65,6 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
-        .environmentObject(QAService.shared)
+        .environment(QAService.shared)
         .modelContainer(for: DrawDate.self, inMemory: true)
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Observation
 
 // setup enum rawValue according to 'Shortcut Item Type' on info.plist
 enum QuickAction: String {
@@ -36,7 +37,8 @@ enum QA: Equatable {
     }
 }
 
-class QAService: ObservableObject {
+@Observable
+class QAService {
     static let shared = QAService()
-    @Published var action: QA?
+    var action: QA?
 }
