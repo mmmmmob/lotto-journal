@@ -2,7 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
     },
     "%@ %@, %@" : {
       "localizations" : {
@@ -434,6 +434,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "เริ่มจดบันทึกสลากเพื่อดูรายงานของคุณ"
+          }
+        }
+      }
+    },
+    "Latest" : {
+      "localizations" : {
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "งวดล่าสุด"
           }
         }
       }
