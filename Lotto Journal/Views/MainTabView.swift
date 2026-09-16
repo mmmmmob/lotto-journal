@@ -9,35 +9,35 @@ import SwiftUI
 
 struct MainTabView: View {
     @State var selectedTab: Int = 1
+    @State var date: Date = Date()
+    @State var number: String = ""
     
     @EnvironmentObject var qaService: QAService
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
-        TabView(selection: $selectedTab,
-                content:  {
-            MyLotteryView()
-                .tabItem {
-                    Image(systemName: "123.rectangle")
-                    Text("My Lottery")
+        TabView(selection: $selectedTab) {
+            Tab("My Lottery", systemImage: "123.rectangle", value: 1) {
+                MyLotteryView()
+            }
+            Tab("Summary", systemImage: "list.bullet.clipboard", value: 2) {
+                SummaryView()
+            }
+            Tab("Prize Result", systemImage: "binoculars", value: 3) {
+                CheckResultView(date: $date)
+            }
+            Tab("", systemImage: "1.magnifyingglass", value: 4, role: .search) {
+                NavigationStack {
+                    ResultView(text: $number, date: date)
                 }
-                .tag(1)
-            SummaryView()
-                .tabItem {
-                    Image(systemName: "list.bullet.clipboard")
-                    Text("Summary")
-                }
-                .tag(2)
-            CheckResultView()
-                .tabItem {
-                    Image(systemName: "1.magnifyingglass")
-                    Text("Prize Result")
-                }
-                .tag(3)
-        })
+                .searchable(text: $number, prompt: "Check Your Lottery")
+                .keyboardType(.numberPad)
+            }
+        }
+        .tabViewSearchActivation(.searchTabSelection)
         .tint(.blue)
-        .onChange(of: scenePhase) {
-            switch scenePhase {
+        .onChange(of: scenePhase) { _, newPhase in
+            switch newPhase {
             case .active:
                 performAction()
             default:
@@ -65,4 +65,6 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environmentObject(QAService.shared)
+        .modelContainer(for: DrawDate.self, inMemory: true)
 }

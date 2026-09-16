@@ -35,14 +35,10 @@ struct SummaryView: View {
     }
     
     var chanceOfWinning: Double {
-        var percentage: Double = 0.00
-        
+        guard !lotteries.isEmpty else { return 0.0 }
         let numberOfLotteryBought = Double(lotteries.count)
-        let numberOfLotteryWon = Double(lotteries.filter({$0.status == .doesWon}).count)
-        
-        percentage = (numberOfLotteryWon / numberOfLotteryBought) * 100
-        
-        return percentage
+        let numberOfLotteryWon = Double(lotteries.filter({ $0.status == .doesWon }).count)
+        return (numberOfLotteryWon / numberOfLotteryBought) * 100
     }
     
     var body: some View {
@@ -54,49 +50,86 @@ struct SummaryView: View {
                         systemImage: "chart.bar.xaxis",
                         description: Text("Keep using to track your progress")
                     )
-                }
-                else {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.customBlue)
-                        .padding(.horizontal)
-                        .padding(.top, 10)
-                        .frame(maxWidth: .infinity, maxHeight: 160)
-                        .overlay {
-                            VStack(alignment: .trailing) {
+                } else {
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            // Total Profit / Loss Card
+                            VStack(alignment: .trailing, spacing: 8) {
                                 Text("📈 Total Profit / Loss")
-                                    .font(.system(.caption, design: .default, weight: .regular))
-                                    .foregroundStyle(.customWhite)
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color.customWhite.opacity(0.85))
                                 Text("฿\(totalPL.delimiter)")
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                    .foregroundStyle(totalPL > 0 ? .customGreen : .customRed)
+                                    .foregroundStyle(totalPL > 0 ? Color.customGreen : Color.red)
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .padding(40)
-                            .padding(.top)
-                        }
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.customBlue)
-                        .frame(maxWidth: .infinity, maxHeight: 150)
-                        .padding(.horizontal)
-                        .overlay {
-                            VStack(alignment: .trailing) {
+                            .padding(24)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [Color.customBlue.opacity(0.92), Color.customBlue],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                            }
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            colors: [Color.white.opacity(0.45), Color.white.opacity(0.12)],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 1
+                                    )
+                            }
+                            .shadow(color: Color.customBlue.opacity(0.28), radius: 12, x: 0, y: 6)
+                            
+                            // Chance of Winning Card
+                            VStack(alignment: .trailing, spacing: 8) {
                                 Text("⛅️ Chance of Winning")
-                                    .font(.system(.caption, design: .default, weight: .regular))
-                                    .foregroundStyle(.customWhite)
-                                Text("\(chanceOfWinning, specifier: "%.2f")%")
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color.customWhite.opacity(0.85))
+                                Text(chanceOfWinning / 100, format: .percent.precision(.fractionLength(2)))
                                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
-                                    .foregroundStyle(chanceOfWinning < 50 ? .customRed : .customGreen)
+                                    .foregroundStyle(chanceOfWinning < 50 ? Color.red : Color.customGreen)
                             }
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                            .padding(40)
+                            .padding(24)
+                            .background {
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [Color.customBlue.opacity(0.92), Color.customBlue],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                            }
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            colors: [Color.white.opacity(0.45), Color.white.opacity(0.12)],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 1
+                                    )
+                            }
+                            .shadow(color: Color.customBlue.opacity(0.28), radius: 12, x: 0, y: 6)
+                            
+                            // Spending & Prize Won widgets
+                            HStack(spacing: 12) {
+                                SummaryWidgetHalfView(numberToShow: totalSpending, headerText: String(localized: "💸 Total Spending"))
+                                SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: String(localized: "🏆 Total Prize Won"))
+                            }
                         }
-                    HStack {
-                        SummaryWidgetHalfView(numberToShow: totalSpending, headerText: String(localized: "💸 Total Spending"))
-                            .padding(.leading)
-                        SummaryWidgetHalfView(numberToShow: totalPrizeWon, headerText: String(localized: "🏆 Total Prize Won"))
-                            .padding(.trailing)
+                        .padding(.horizontal)
+                        .padding(.top, 10)
                     }
-                    Spacer()
                 }
             }
             .navigationTitle("Summary")

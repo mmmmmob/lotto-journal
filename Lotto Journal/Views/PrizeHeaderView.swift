@@ -15,13 +15,14 @@ struct PrizeHeaderView: View {
     var body: some View {
         HStack {
             Text(prize)
-                .font(.system(.title2, design: .default, weight: .bold))
+                .font(.system(.headline, design: .default, weight: .semibold))
             Spacer()
             Text("฿\(amount)")
-                .font(.system(.callout, design: .default, weight: .regular))
+                .font(.system(.subheadline, design: .default, weight: .regular))
                 .foregroundStyle(.secondary)
         }
-        .offset(x: 0, y: 5)
+        .padding(.horizontal, 4)
+        .padding(.top, 4)
     }
 }
 
