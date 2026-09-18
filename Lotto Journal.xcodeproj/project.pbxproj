@@ -37,6 +37,7 @@
 		4AFEAC342BFF764E00BA40AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEAC332BFF764E00BA40AD /* SceneDelegate.swift */; };
 		4AFEAC362BFF77BB00BA40AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEAC352BFF77BB00BA40AD /* AppDelegate.swift */; };
 		4AFEAC382BFF795100BA40AD /* QuickActionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFEAC372BFF795100BA40AD /* QuickActionType.swift */; };
+		991AE52F305D2FC500F4ED00 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 991AE52E305D2FC500F4ED00 /* AppIcon.icon */; };
 		992FF7E530514DFE0063998B /* ARCHITECTURE.md in Resources */ = {isa = PBXBuildFile; fileRef = 992FF7E430514DFE0063998B /* ARCHITECTURE.md */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +75,7 @@
 		4AC9962F2C106C2100B03EEB /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4AC996372C10BCD000B03EEB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4AC996392C10BDAA00B03EEB /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = th.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lotto Journal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AF097592BF9DA21003A813B /* Lotto Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Lotto Journal.app"; path = "/Users/theppitak.m/Coding/Playground/lotto-journal/build/Debug-iphoneos/Lotto Journal.app"; sourceTree = "<absolute>"; };
 		4AF0975C2BF9DA21003A813B /* Lotto_JournalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto_JournalApp.swift; sourceTree = "<group>"; };
 		4AF0975E2BF9DA21003A813B /* MyLotteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotteryView.swift; sourceTree = "<group>"; };
 		4AF097622BF9DA24003A813B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +84,7 @@
 		4AFEAC332BFF764E00BA40AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4AFEAC352BFF77BB00BA40AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4AFEAC372BFF795100BA40AD /* QuickActionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionType.swift; sourceTree = "<group>"; };
+		991AE52E305D2FC500F4ED00 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		992FF7E430514DFE0063998B /* ARCHITECTURE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ARCHITECTURE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,16 +157,8 @@
 				4AC996362C10BCD000B03EEB /* InfoPlist.strings */,
 				4AC9962F2C106C2100B03EEB /* Localizable.xcstrings */,
 				4AF0975B2BF9DA21003A813B /* Lotto Journal */,
-				4AF0975A2BF9DA21003A813B /* Products */,
+				991AE52E305D2FC500F4ED00 /* AppIcon.icon */,
 			);
-			sourceTree = "<group>";
-		};
-		4AF0975A2BF9DA21003A813B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4AF097592BF9DA21003A813B /* Lotto Journal.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		4AF0975B2BF9DA21003A813B /* Lotto Journal */ = {
@@ -297,7 +291,7 @@
 				4A8C44182BFB567A000461B9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				4AADFB5D2C0392C100AE57E6 /* XCRemoteSwiftPackageReference "otpview-swiftui" */,
 			);
-			productRefGroup = 4AF0975A2BF9DA21003A813B /* Products */;
+			productRefGroup = 4AF097502BF9DA21003A813B;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -316,6 +310,7 @@
 				4AF097632BF9DA24003A813B /* Assets.xcassets in Resources */,
 				4AC996302C106C2100B03EEB /* Localizable.xcstrings in Resources */,
 				992FF7E530514DFE0063998B /* ARCHITECTURE.md in Resources */,
+				991AE52F305D2FC500F4ED00 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +491,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lotto Journal/Preview Content\"";
@@ -503,7 +499,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lotto-Journal-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lotto Journal";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreenView.storyboard;
@@ -532,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lotto Journal/Preview Content\"";
@@ -539,7 +536,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Lotto-Journal-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Lotto Journal";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreenView.storyboard;

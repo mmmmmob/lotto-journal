@@ -32,9 +32,9 @@ A native iOS Thai Lottery Journal and Tracker application built with **SwiftUI**
 
 ## 🏛️ Codebase Architecture
 
-Lotto Journal follows a **SwiftUI MVVM (Model-View-ViewModel)** architectural pattern integrated with **SwiftData** for local persistence.
+Lotto Journal follows a **SwiftUI MVVM (Model-View-ViewModel)** architectural pattern integrated with **SwiftData** for local persistence and Apple's **Observation** framework (`@Observable`).
 
-> 📖 **Deep Dive**: For full ER diagrams, detailed sequence flows, and GLO API specifications, refer to [**ARCHITECTURE.md**](ARCHITECTURE.md).
+> 📖 **Deep Dive**: For full ER diagrams, detailed sequence flows, and GLO API specifications, refer to [**ARCHITECTURE.md**](Lotto%20Journal/ARCHITECTURE.md).
 
 ```
 ┌────────────────────────────────────────────────────────┐
@@ -42,7 +42,7 @@ Lotto Journal follows a **SwiftUI MVVM (Model-View-ViewModel)** architectural pa
 │   MainTabView ── MyLotteryView ── SummaryView ── ...   │
 └───────────────▲────────────────────────▲───────────────┘
                 │                        │
-       @Query / SwiftData                │ ObservableObject
+       @Query / SwiftData               │ @Observable / @State
                 │                        │
 ┌───────────────▼──────────────┐ ┌───────▼───────────────┐
 │     Persistence (SwiftData)  │ │      ViewModels       │
@@ -61,7 +61,7 @@ Lotto Journal follows a **SwiftUI MVVM (Model-View-ViewModel)** architectural pa
 - [`Result.swift`](Lotto%20Journal/Models/Result.swift): Struct model capturing parsed response payloads from the GLO API.
 
 ### 2. ViewModel & Networking (`ViewModels/`)
-- [`CheckResultViewModel.swift`](Lotto%20Journal/ViewModels/CheckResultViewModel.swift): `ObservableObject` communicating with the official GLO API via Alamofire and SwiftyJSON.
+- [`CheckResultViewModel.swift`](Lotto%20Journal/ViewModels/CheckResultViewModel.swift): `@Observable` view model communicating with the official GLO API via Alamofire and SwiftyJSON.
   - `numberSearchAPI`: Verifies specific ticket numbers against a selected draw date.
   - `drawDateResultAPI`: Fetches all winning prize tiers for a specific draw date.
   - `latestResultAPI`: Retrieves the latest draw date and winning numbers.
@@ -78,7 +78,7 @@ Lotto Journal follows a **SwiftUI MVVM (Model-View-ViewModel)** architectural pa
 - **Components**: Reusable views for prize headers, individual numbers, and metric widgets ([`PrizeHeaderView.swift`](Lotto%20Journal/Views/PrizeHeaderView.swift), [`PrizeNumberView.swift`](Lotto%20Journal/Views/PrizeNumberView.swift), [`SummaryWidgetHalfView.swift`](Lotto%20Journal/Views/SummaryWidgetHalfView.swift)).
 
 ### 4. Quick Actions (`QuickActions/`)
-- [`QuickActionType.swift`](Lotto%20Journal/QuickActions/QuickActionType.swift): Defines `UIApplicationShortcutItem` types and provides `QAService` singleton to forward shortcut selections to SwiftUI.
+- [`QuickActionType.swift`](Lotto%20Journal/QuickActions/QuickActionType.swift): Defines `UIApplicationShortcutItem` types and provides `@Observable` `QAService` singleton to forward shortcut selections to SwiftUI.
 - [`AppDelegate.swift`](Lotto%20Journal/QuickActions/AppDelegate.swift) & [`SceneDelegate.swift`](Lotto%20Journal/QuickActions/SceneDelegate.swift): Intercepts shortcut item invocations when launching or resuming from background.
 
 ### 5. Utilities & Extensions (`Extensions/`)
@@ -97,7 +97,7 @@ lotto-journal/
 │   │   ├── Lottery.swift           # @Model for individual ticket
 │   │   ├── Prize.swift             # Prize tier definitions & payouts
 │   │   └── Result.swift            # API response data structure
-│   ├── ViewModels/                 # Observable ViewModels
+│   ├── ViewModels/                 # @Observable ViewModels
 │   │   └── CheckResultViewModel.swift # GLO network operations
 │   ├── Views/                      # Screen-level and component views
 │   │   ├── MainTabView.swift       # Tab bar navigation & routing
@@ -124,6 +124,7 @@ lotto-journal/
 
 - **Language & Framework**: Swift 5.9+ / Swift 6, SwiftUI
 - **Local Persistence**: [SwiftData](https://developer.apple.com/documentation/swiftdata)
+- **Observation**: [Observation Framework](https://developer.apple.com/documentation/observation) (`@Observable`)
 - **Networking**: [Alamofire](https://github.com/Alamofire/Alamofire)
 - **JSON Parsing**: [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 - **UI Components**: [otpview-swiftui](https://github.com/mukeshsolanki/otpview-swiftui) (adapted for 6-digit lottery input)
@@ -134,9 +135,9 @@ lotto-journal/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- macOS Sonoma (14.0+) or later
-- Xcode 15.0+ or later
-- iOS 17.0+ deployment target (required for SwiftData)
+- macOS Sequoia (15.0+) or later
+- Xcode 16.0+ (or Xcode 26.0+)
+- iOS 26.6+ deployment target (compatible with SwiftData and Observation)
 
 ### Installation
 1. Clone the repository:
@@ -149,7 +150,7 @@ lotto-journal/
    open "Lotto Journal.xcodeproj"
    ```
 3. Allow Xcode to resolve Swift Package Manager (SPM) dependencies.
-4. Select an iOS Simulator (iOS 17+) or physical device and click **Run** (`Cmd + R`).
+4. Select an iOS Simulator or physical device (iOS 26.6+) and click **Run** (`Cmd + R`).
 
 ---
 

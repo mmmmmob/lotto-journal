@@ -11,7 +11,7 @@ import OTPView
 
 struct AddMyLotteryView: View {
     
-    @StateObject private var apiCall = CheckResultViewModel()
+    @State private var apiCall = CheckResultViewModel()
     
     @Query private var listedDrawDate: [DrawDate]
     
@@ -21,6 +21,21 @@ struct AddMyLotteryView: View {
     @State private var number: String = ""
     @State private var amountBought: Int = 1
     @State private var drawDate = Date()
+    
+    private var maxDrawDate: Date {
+        if let latest = apiCall.result.latestResultDate.toDate() {
+            return latest.upcomingDrawDate
+        }
+        return Date().upcomingDrawDate
+    }
+    
+    private var canGoPrevious: Bool {
+        drawDate > apiCall.firstDayOfResult
+    }
+    
+    private var canGoNext: Bool {
+        drawDate < maxDrawDate
+    }
     
     var body: some View {
         NavigationStack {
@@ -52,16 +67,58 @@ struct AddMyLotteryView: View {
                                     .padding(.trailing, 4)
                             }
                         }
+                        .tint(Color.customBlue)
                         
                         Divider()
                         
-                        DatePicker(selection: $drawDate, displayedComponents: .date) {
+                        HStack(spacing: 8) {
                             Label("Draw Date", systemImage: "calendar")
                                 .font(.body.weight(.medium))
+                            
+                            Spacer()
+                            
+                            // Previous Draw Stepper Button
+                            Button {
+                                drawDate = drawDate.previousDrawDate
+                            } label: {
+                                Image(systemName: "chevron.left")
+                                    .font(.subheadline.weight(.semibold))
+                                    .frame(width: 32, height: 32)
+                                    .background(Color.secondary.opacity(0.12), in: Circle())
+                            }
+                            .buttonStyle(.plain)
+                            .disabled(!canGoPrevious)
+                            .opacity(canGoPrevious ? 1.0 : 0.3)
+                            
+                            DatePicker(
+                                "Draw Date",
+                                selection: $drawDate,
+                                in: apiCall.firstDayOfResult...maxDrawDate,
+                                displayedComponents: .date
+                            )
+                            .datePickerStyle(.compact)
+                            .labelsHidden()
+                            
+                            // Next Draw Stepper Button
+                            Button {
+                                let nextDate = drawDate.upcomingDrawDate
+                                drawDate = nextDate > maxDrawDate ? maxDrawDate : nextDate
+                            } label: {
+                                Image(systemName: "chevron.right")
+                                    .font(.subheadline.weight(.semibold))
+                                    .frame(width: 32, height: 32)
+                                    .background(Color.secondary.opacity(0.12), in: Circle())
+                            }
+                            .buttonStyle(.plain)
+                            .disabled(!canGoNext)
+                            .opacity(canGoNext ? 1.0 : 0.3)
                         }
                     }
                     .padding(16)
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                    .background {
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color(uiColor: .secondarySystemGroupedBackground))
+                    }
                     .overlay {
                         RoundedRectangle(cornerRadius: 18, style: .continuous)
                             .strokeBorder(
@@ -134,8 +191,8 @@ struct AddMyLotteryView: View {
                 }
             }
         }
-        .onAppear {
-            apiCall.latestResultAPI()
+        .task {
+            await apiCall.latestResult()
         }
         .onChange(of: apiCall.result.latestResultDate) { _, newLatestDate in
             if let latestResultDate = newLatestDate.toDate() {
