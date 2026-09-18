@@ -15,6 +15,7 @@ struct ResultView: View {
     let date: Date
     @State var isSearchDone: Bool = false
     @State var isDateCorrect: Bool = true
+    @State private var isValidatingDate: Bool = false
     
     var body: some View {
         VStack {
@@ -127,22 +128,32 @@ struct ResultView: View {
         .frame(maxWidth: .infinity)
         .sensoryFeedback(.success, trigger: isSearchDone)
         .sensoryFeedback(.error, trigger: isDateCorrect)
+        .task(id: date) {
+            await validateDate()
+        }
         .onChange(of: text) { _, newText in
-            if newText.count == 6 && isDateCorrect == true {
-                viewModel.numberSearchAPI(searchNum: newText, date: date.periodDate)
-                isSearchDone.toggle()
+            if newText.count == 6 && isDateCorrect {
+                Task {
+                    await viewModel.numberSearch(searchNum: newText, date: date.periodDate)
+                    isSearchDone.toggle()
+                }
             } else if newText.count < 6 {
                 viewModel.result.userResult.removeAll()
                 viewModel.result.fetchNumberStatus = 500
-                viewModel.drawDateResultAPI(date.params)
-                if viewModel.result.checkResultStatus == "Unsuccess" {
-                    isDateCorrect = false
-                } else { isDateCorrect = true }
             }
         }
-        .onChange(of: date) { _, _ in
-            isDateCorrect = true
-            viewModel.result.checkResultStatus = ""
+    }
+    
+    private func validateDate() async {
+        isValidatingDate = true
+        await viewModel.drawDateResult(date.params)
+        isDateCorrect = (viewModel.result.checkResultStatus != "Unsuccess")
+        isValidatingDate = false
+        
+        // If 6 digits were already entered, re-run search with the verified date
+        if text.count == 6 && isDateCorrect {
+            await viewModel.numberSearch(searchNum: text, date: date.periodDate)
+            isSearchDone.toggle()
         }
     }
 }

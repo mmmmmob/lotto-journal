@@ -11,6 +11,7 @@ struct MainTabView: View {
     @State var selectedTab: Int = 1
     @State var date: Date = Date()
     @State var number: String = ""
+    @State private var viewModel = CheckResultViewModel()
     
     @Environment(QAService.self) private var qaService
     @Environment(\.scenePhase) var scenePhase
@@ -36,6 +37,12 @@ struct MainTabView: View {
         }
         .tabViewSearchActivation(.searchTabSelection)
         .tint(.blue)
+        .task {
+            await viewModel.latestResult()
+            if let latestDate = viewModel.result.latestResultDate.toDate() {
+                date = latestDate
+            }
+        }
         .onChange(of: scenePhase) { _, newPhase in
             switch newPhase {
             case .active:

@@ -150,45 +150,43 @@ struct MyLotteryView: View {
                     .presentationDragIndicator(.visible)
             }
             .refreshable {
-                processDatesAndLotteries()
+                await refreshData()
             }
         }
-        .onAppear {
-            firstAPICall.latestResultAPI()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                processDatesAndLotteries()
-            }
+        .task {
+            await refreshData()
         }
         .onChange(of: lotteries) { _, _ in
-            processDatesAndLotteries()
+            Task {
+                await processDatesAndLotteries()
+            }
         }
     }
     
-    func updateResultAPI(param: Parameters, completion: @escaping ([JSON]) -> Void) {
-        AF.request(
-            "https://www.glo.or.th/api/checking/getcheckLotteryResult",
-            method: .post,
-            parameters: param,
-            encoding: JSONEncoding.prettyPrinted,
-            headers: nil)
-        .validate(statusCode: 200 ..< 299)
-        .responseData { response in
-            switch response.result {
-            case .success(let data):
-                do {
-                    // Parse the JSON data
-                    let json = try JSON(data: data)
-                    let pathResult: [JSONSubscriptType] = ["response", "result"]
-                    let result = json[pathResult].array ?? []
-                    completion(result)
-                } catch {
-                    print("Error parsing JSON: \(error)")
-                    completion([])
-                }
-            case .failure(let error):
-                print("Request failed with error: \(error)")
-                completion([])
-            }
+    private func refreshData() async {
+        await firstAPICall.latestResult()
+        await processDatesAndLotteries()
+    }
+    
+    func fetchResult(for param: Parameters) async -> [JSON] {
+        do {
+            let data = try await AF.request(
+                "https://www.glo.or.th/api/checking/getcheckLotteryResult",
+                method: .post,
+                parameters: param,
+                encoding: JSONEncoding.prettyPrinted,
+                headers: nil
+            )
+            .validate(statusCode: 200 ..< 299)
+            .serializingData()
+            .value
+            
+            let json = try JSON(data: data)
+            let pathResult: [JSONSubscriptType] = ["response", "result"]
+            return json[pathResult].array ?? []
+        } catch {
+            print("Error fetching lottery result: \(error)")
+            return []
         }
     }
     
@@ -227,15 +225,26 @@ struct MyLotteryView: View {
         }
     }
     
-    func processDatesAndLotteries() {
-        dates.forEach { date in
-            updateResultAPI(param: date.params) { result in
-                date.result = result
-                let latestResultDate = firstAPICall.result.latestResultDate.toDate()
-                lotteries.forEach { lottery in
-                    for prize in date.lotteryPrizeResult {
-                        if let prizeAmount = prize[lottery.number] {
-                            updateLotteryStatus(for: lottery, with: prizeAmount, on: date.date, latestResultDate: latestResultDate)
+    func processDatesAndLotteries() async {
+        let latestResultDate = firstAPICall.result.latestResultDate.toDate()
+        let dateEntries = dates.map { ($0.persistentModelID, $0.params) }
+        
+        await withTaskGroup(of: (PersistentIdentifier, [JSON]).self) { group in
+            for (id, params) in dateEntries {
+                group.addTask {
+                    let result = await fetchResult(for: params)
+                    return (id, result)
+                }
+            }
+            
+            for await (id, result) in group {
+                if let date = dates.first(where: { $0.persistentModelID == id }) {
+                    date.result = result
+                    for lottery in lotteries {
+                        for prize in date.lotteryPrizeResult {
+                            if let prizeAmount = prize[lottery.number] {
+                                updateLotteryStatus(for: lottery, with: prizeAmount, on: date.date, latestResultDate: latestResultDate)
+                            }
                         }
                     }
                 }
