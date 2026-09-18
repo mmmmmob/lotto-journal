@@ -11,7 +11,7 @@ import SwiftData
 @main
 struct Lotto_JournalApp: App {
     
-    private let qaService = QAService.shared
+    @State private var qaService = QAService.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     let container: ModelContainer
@@ -19,7 +19,7 @@ struct Lotto_JournalApp: App {
     var body: some Scene {
         WindowGroup {
             MainTabView(selectedTab: 1)
-                .environmentObject(qaService)
+                .environment(qaService)
         }
         .modelContainer(container)
     }

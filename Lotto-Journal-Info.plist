@@ -22,11 +22,19 @@
 		</dict>
 		<dict>
 			<key>UIApplicationShortcutItemIconSymbolName</key>
-			<string>1.magnifyingglass</string>
+			<string>binoculars</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>PRIZE_RESULT_SHORTCUT_TITLE</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>result</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>1.magnifyingglass</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>SEARCH_RESULT_SHORTCUT_TITLE</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>searchResult</string>
 		</dict>
 	</array>
 	<key>UILaunchScreen</key>
