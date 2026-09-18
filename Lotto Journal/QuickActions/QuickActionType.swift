@@ -13,12 +13,14 @@ enum QuickAction: String {
     case myLottery = "myLottery"
     case summary = "summary"
     case result = "result"
+    case searchResult = "searchResult"
 }
 
 enum QA: Equatable {
     case myLottery
     case summary
     case result
+    case searchResult
 
     init?(shortcutItem: UIApplicationShortcutItem) {
         // init QA.self based on rawValue of QuickAction enum taken in as argument
@@ -33,6 +35,8 @@ enum QA: Equatable {
             self = .summary
         case .result:
             self = .result
+        case .searchResult:
+            self = .searchResult
         }
     }
 }

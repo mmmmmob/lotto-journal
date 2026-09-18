@@ -57,6 +57,8 @@ struct MainTabView: View {
             selectedTab = 2
         case .result:
             selectedTab = 3
+        case .searchResult:
+            selectedTab = 4
         }
         
         qaService.action = nil
